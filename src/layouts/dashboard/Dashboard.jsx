@@ -10,6 +10,7 @@ import {
   FaChalkboardTeacher,
   FaRegFileAlt,
   FaUserClock,
+  FaUserCheck,
 } from "react-icons/fa";
 
 const Dashboard = () => {
@@ -102,6 +103,12 @@ const Dashboard = () => {
               View all users
             </NavLink>
           </li>
+          <li>
+            <NavLink to="/dashboard/active_tutors">
+              <FaUserCheck className="mr-2" /> Active Tutors
+            </NavLink>
+          </li>
+
           {/* Pending Tutors */}
           <li>
             <NavLink to="/dashboard/pending_tutors">
