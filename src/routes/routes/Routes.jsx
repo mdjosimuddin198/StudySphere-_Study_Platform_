@@ -5,6 +5,8 @@ import SignUp from "../../pages/signUp/SignUp";
 import LogIn from "../../pages/logIn/LogIn";
 import Home from "../../components/home/Home";
 import AboutUS from "../../pages/about/AboutUS";
+import PrivetRoutes from "../privetRotes/PrivetRoutes";
+import BeATutor from "../../pages/beATutor/BeATutor";
 
 const Routes = createBrowserRouter([
   {
@@ -12,6 +14,14 @@ const Routes = createBrowserRouter([
     Component: Mainlayouts,
     children: [
       { index: true, Component: Home },
+      {
+        path: "be_a_tutor",
+        element: (
+          <PrivetRoutes>
+            <BeATutor></BeATutor>
+          </PrivetRoutes>
+        ),
+      },
       {
         path: "about_us",
         Component: AboutUS,

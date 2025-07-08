@@ -6,8 +6,10 @@ import Lottie from "lottie-react";
 import loginINLottei from "../../assets/LottieFiles/LoginLottie.json";
 
 import useAuth from "../../hooks/useAuth";
+import useAxois from "../../useAxois/useAxois";
 
 const LogIn = () => {
+  const axoisInstece = useAxois();
   const { loginUser, handlegoogle } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
@@ -34,7 +36,19 @@ const LogIn = () => {
   const handleGoogoleLogin = () => {
     // console.log("hello login ");
     handlegoogle()
-      .then((result) => {
+      .then(async (result) => {
+        const user = result.user;
+
+        const userInfo = {
+          email: user.email,
+          role: "user", //update its student or admin
+          created_at: new Date().toISOString(),
+          last_log_in: new Date().toISOString(),
+        };
+
+        const userRes = await axoisInstece.post("/users", userInfo);
+        console.log(userRes.data);
+
         navigate(`${location.state ? location.state : "/"}`);
         toast.success(`Loged In SuccessFully `);
         // console.log(result);
@@ -44,6 +58,7 @@ const LogIn = () => {
         toast.error("error found");
       });
   };
+
   return (
     <div className="flex items-center justify-center mx-4 flex-col md:flex-row">
       <div className="card bg-base-100 mx-auto my-20 w-full max-w-sm shrink-0 shadow-2xl">

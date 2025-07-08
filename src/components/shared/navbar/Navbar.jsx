@@ -2,25 +2,48 @@ import React, { useState } from "react";
 import { Link, NavLink } from "react-router";
 import { toast } from "react-toastify";
 import useAuth from "../../../hooks/useAuth";
+import Logo from "../logo/Logo";
 
 const drawerId = "my-drawer-4";
 const Navbar = () => {
-  const { logedInuser, logOutUser } = useAuth();
+  const { logedInuser, setLogedInUser, logOutUser } = useAuth();
 
-  const handleLogOutUser = () => {
-    logOutUser()
-      .then(() => {
-        toast.success("logOut successFully");
-      })
-      .catch((error) => {
-        toast.error(error?.message);
+  // const handleLogOutUser = () => {
+  //   logOutUser()
+  //     .then(() => {
+  //       toast.success("logOut successFully");
+  //     })
+  //     .catch((error) => {
+  //       toast.error(error?.message);
+  //     });
+  // };
+
+  const handleLogOutUser = async () => {
+    try {
+      // 1️⃣ Firebase থেকে লগআউট
+      await logOutUser();
+
+      // 2️⃣ Express এ কল দিয়ে কুকিতে থাকা টোকেনও clear করো
+      await fetch("http://localhost:5000/api/logout", {
+        method: "POST",
+        credentials: "include",
       });
+
+      setLogedInUser(null);
+      toast.success("Log Out Successfully");
+    } catch (error) {
+      console.error(error);
+      toast.error("error found.");
+    }
   };
 
   const links = (
     <>
       <NavLink className="ml-4" to="/">
         HOME
+      </NavLink>
+      <NavLink className="ml-4" to="/be_a_tutor">
+        Be A Tutor
       </NavLink>
 
       <NavLink className="ml-4" to="/dashboard">
@@ -61,6 +84,7 @@ const Navbar = () => {
               {links}
             </ul>
           </div>
+          <Logo></Logo>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{links}</ul>

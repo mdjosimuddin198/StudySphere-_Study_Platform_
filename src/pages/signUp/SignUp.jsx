@@ -6,17 +6,19 @@ import { BsEye } from "react-icons/bs";
 import { toast } from "react-toastify";
 import { FcGoogle } from "react-icons/fc";
 import useAuth from "../../hooks/useAuth";
+import axios from "axios";
+import useAxois from "../../useAxois/useAxois";
 
 // import { Helmet } from "react-helmet";
 
 const SignUp = () => {
-  //   const { handlegoogle } = useContext(AuthContext);
   const navigate = useNavigate();
   const [errorMsg, setErrorMsg] = useState("");
   const [successMsg, setSuccessMsg] = useState(false);
   const { creatAccount, updateUser, setLogedInUser, handlegoogle } = useAuth();
-
+  const [profilePic, setProfilePic] = useState("");
   const [showPass, setShowPass] = useState(false);
+  const axoisInstece = useAxois();
 
   const handleshowPassword = () => {
     setShowPass(!showPass);
@@ -28,7 +30,6 @@ const SignUp = () => {
     setSuccessMsg(false);
     const form = e.target;
     const name = form.name.value;
-    const photo = form.photo.value;
     const password = form.password.value;
     const email = form.email.value;
 
@@ -43,13 +44,28 @@ const SignUp = () => {
       toast.error(` Password must contain at least one lowercase letter`);
     } else {
       creatAccount(email, password)
-        .then((result) => {
+        .then(async (result) => {
           // console.log(result);
           const user = result.user;
-          updateUser({ displayName: name, photoURL: photo })
+
+          const userInfo = {
+            email: email,
+            role: "user", //update its student or admin
+            created_at: new Date().toISOString(),
+            last_log_in: new Date().toISOString(),
+          };
+
+          const userRes = await axoisInstece.post("/users", userInfo);
+          console.log(userRes.data);
+
+          updateUser({ displayName: name, photoURL: profilePic })
             .then(() => {
               // console.log(user);
-              setLogedInUser({ ...user, displayName: name, photoURL: photo });
+              setLogedInUser({
+                ...user,
+                displayName: name,
+                photoURL: profilePic,
+              });
             })
             .catch((error) => {
               console.log(error);
@@ -73,16 +89,45 @@ const SignUp = () => {
   const handleGoogoleLogin = () => {
     // console.log("hello login ");
     handlegoogle()
-      .then((result) => {
+      .then(async (result) => {
+        const user = result.user;
+
+        const userInfo = {
+          email: user.email,
+          role: "user", //update its student or admin
+          created_at: new Date().toISOString(),
+          last_log_in: new Date().toISOString(),
+        };
+
+        const userRes = await axoisInstece.post("/users", userInfo);
+        console.log(userRes.data);
+
         navigate(`${location.state ? location.state : "/"}`);
         toast.success(`Loged In SuccessFully `);
-        // console.log(result);
+        console.log(result);
       })
       .catch((error) => {
         console.log(error);
         toast.error("error found");
       });
   };
+
+  const handleImageUpload = async (e) => {
+    const image = e.target.files[0];
+    console.log(image);
+
+    const formData = new FormData();
+    formData.append("image", image);
+
+    const imagUploadUrl = `https://api.imgbb.com/1/upload?key=${
+      import.meta.env.VITE_image_upload_key
+    }`;
+    const res = await axios.post(imagUploadUrl, formData);
+
+    setProfilePic(res.data.data.url);
+    console.log(res.data);
+  };
+
   return (
     <>
       {/* <Helmet>
@@ -102,12 +147,21 @@ const SignUp = () => {
               required
             />
             {/* photourl  */}
-            <label className="label text-xl">PhotoURL</label>
+            {/* <label className="label text-xl">PhotoURL</label>
             <input
               type="text"
               name="photo"
               className="input"
               placeholder="PhotoURL"
+              required
+            /> */}
+            <label className="label text-xl">Photo</label>
+            <input
+              onChange={handleImageUpload}
+              type="file"
+              // name="photo"
+              className="input"
+              placeholder="your Image"
               required
             />
             {/* email */}
