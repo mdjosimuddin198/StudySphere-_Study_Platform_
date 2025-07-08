@@ -1,9 +1,13 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
+import useSecureAxios from "../../useAxois/useSecureAxios/useSecureAxios";
+import { toast } from "react-toastify";
+import Swal from "sweetalert2";
 
 const BeATutor = () => {
   const { logedInuser } = useAuth();
+  const secureAxios = useSecureAxios();
   const {
     register,
     handleSubmit,
@@ -11,9 +15,21 @@ const BeATutor = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log("Tutor Form Data:", data);
-    reset();
+  const onSubmit = (tutorData) => {
+    tutorData.status = "pending";
+    console.log("Tutor Form Data:", tutorData);
+    secureAxios.post("/tutors", tutorData).then((result) => {
+      console.log(tutorData);
+      if (result.data.insertedId) {
+        Swal.fire({
+          icon: "success",
+          title: "Application Submitted!",
+          text: "Your application is pending approval.",
+        });
+      }
+    });
+
+    // reset();
   };
 
   return (

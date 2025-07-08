@@ -7,6 +7,7 @@ import Home from "../../components/home/Home";
 import AboutUS from "../../pages/about/AboutUS";
 import PrivetRoutes from "../privetRotes/PrivetRoutes";
 import BeATutor from "../../pages/beATutor/BeATutor";
+import Dashboard from "../../layouts/dashboard/Dashboard";
 
 const Routes = createBrowserRouter([
   {
@@ -35,6 +36,14 @@ const Routes = createBrowserRouter([
         Component: LogIn,
       },
     ],
+  },
+  {
+    path: "dashboard",
+    element: (
+      <PrivetRoutes>
+        <Dashboard></Dashboard>
+      </PrivetRoutes>
+    ),
   },
 ]);
 

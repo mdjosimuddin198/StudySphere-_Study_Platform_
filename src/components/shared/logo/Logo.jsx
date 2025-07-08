@@ -1,12 +1,15 @@
 import React from "react";
 import { AiOutlineRead } from "react-icons/ai"; // Book/learning related icon
+import { Link } from "react-router";
 
 const Logo = () => {
   return (
-    <div className="flex items-center gap-2 cursor-pointer">
-      <AiOutlineRead className="text-2xl text-cyan-600" />
-      <span className="text-2xl font-bold text-cyan-600">StudySphere</span>
-    </div>
+    <Link to="/" className="flex items-center gap-2 cursor-pointer">
+      <AiOutlineRead className="md:text-2xl text-sm text-cyan-600" />
+      <span className="md:text-2xl text-sm font-bold text-cyan-600">
+        StudySphere
+      </span>
+    </Link>
   );
 };
 

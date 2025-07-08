@@ -18,7 +18,7 @@ const PrivetRoutes = ({ children }) => {
   if (logedInuser && logedInuser?.email) {
     return children;
   }
-  return <Navigate to="/auth/login" state={location.pathname}></Navigate>;
+  return <Navigate to="/log_in" state={location.pathname}></Navigate>;
 };
 
 export default PrivetRoutes;

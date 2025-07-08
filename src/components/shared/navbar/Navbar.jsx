@@ -86,8 +86,8 @@ const Navbar = () => {
           </div>
           <Logo></Logo>
         </div>
-        <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">{links}</ul>
+        <div className="navbar-center text-white hidden lg:flex">
+          <ul className="menu menu-horizontal  px-1">{links}</ul>
         </div>
         <div className="navbar-end z-50">
           {logedInuser ? (
@@ -134,7 +134,7 @@ const Navbar = () => {
               </div>
             </div>
           ) : (
-            <div className="">
+            <div className="flex gap-1">
               {" "}
               <Link className="btn ml-2" to="/sign_up">
                 SignUp
