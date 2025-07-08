@@ -8,6 +8,7 @@ import AboutUS from "../../pages/about/AboutUS";
 import PrivetRoutes from "../privetRotes/PrivetRoutes";
 import BeATutor from "../../pages/beATutor/BeATutor";
 import Dashboard from "../../layouts/dashboard/Dashboard";
+import PendingTutor from "../../layouts/dashboard/pendingTutor/PendingTutor";
 
 const Routes = createBrowserRouter([
   {
@@ -44,6 +45,16 @@ const Routes = createBrowserRouter([
         <Dashboard></Dashboard>
       </PrivetRoutes>
     ),
+    children: [
+      {
+        path: "pending_tutors",
+        element: (
+          <PrivetRoutes>
+            <PendingTutor></PendingTutor>
+          </PrivetRoutes>
+        ),
+      },
+    ],
   },
 ]);
 

@@ -1,6 +1,16 @@
 import React from "react";
 import { NavLink, Outlet } from "react-router";
 import Logo from "../../components/shared/logo/Logo";
+import {
+  FaHome,
+  FaCalendarAlt,
+  FaStickyNote,
+  FaBook,
+  FaUsers,
+  FaChalkboardTeacher,
+  FaRegFileAlt,
+  FaUserClock,
+} from "react-icons/fa";
 
 const Dashboard = () => {
   return (
@@ -45,12 +55,73 @@ const Dashboard = () => {
         <ul className="menu bg-base-200 text-base-content min-h-full w-80 p-4">
           {/* Sidebar content here */}
           <Logo></Logo>
+          {/* Home */}
           <li>
-            <a>Home</a>
+            <NavLink to="/">
+              <FaHome className="mr-2" />
+              Home
+            </NavLink>
           </li>
+
+          {/* View Booked Session */}
           <li>
             <NavLink to="/dashboard/view_booked_session">
+              <FaCalendarAlt className="mr-2" />
               View booked session
+            </NavLink>
+          </li>
+
+          {/* Create Note */}
+          <li>
+            <NavLink to="/dashboard/create_note">
+              <FaStickyNote className="mr-2" />
+              Create note
+            </NavLink>
+          </li>
+
+          {/* Manage Notes */}
+          <li>
+            <NavLink to="/dashboard/manage_notes">
+              <FaStickyNote className="mr-2" />
+              Manage notes
+            </NavLink>
+          </li>
+
+          {/* All Study Materials */}
+          <li>
+            <NavLink to="/dashboard/all_study_materials">
+              <FaBook className="mr-2" />
+              All study materials
+            </NavLink>
+          </li>
+
+          {/* View All Users */}
+          <li>
+            <NavLink to="/dashboard/view_all_users">
+              <FaUsers className="mr-2" />
+              View all users
+            </NavLink>
+          </li>
+          {/* Pending Tutors */}
+          <li>
+            <NavLink to="/dashboard/pending_tutors">
+              <FaUserClock className="mr-2" />
+              Pending tutors
+            </NavLink>
+          </li>
+          {/* View All Study Sessions */}
+          <li>
+            <NavLink to="/dashboard/view_all_sessions">
+              <FaChalkboardTeacher className="mr-2" />
+              View all study sessions
+            </NavLink>
+          </li>
+
+          {/* View All Materials */}
+          <li>
+            <NavLink to="/dashboard/view_all_materials">
+              <FaRegFileAlt className="mr-2" />
+              View all materials
             </NavLink>
           </li>
         </ul>
