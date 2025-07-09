@@ -12,9 +12,19 @@ import {
   FaUserClock,
   FaUserCheck,
   FaUserShield,
+  FaCalendarPlus,
+  FaUpload,
 } from "react-icons/fa";
+import useUserRole from "../../hooks/useUserRole/useUserRole";
+import Loading from "../../components/loading/Loading";
 
 const Dashboard = () => {
+  const { role, isRoleLoading, isAdmin, isTutor } = useUserRole();
+
+  if (isRoleLoading) {
+    <Loading></Loading>;
+  }
+
   return (
     <div className="drawer lg:drawer-open">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -61,85 +71,115 @@ const Dashboard = () => {
           <li>
             <NavLink to="/">
               <FaHome className="mr-2" />
-              Home
+              Home (allUser)
             </NavLink>
           </li>
+          {role === "user" ? (
+            <>
+              {/* View Booked Session */}
+              <li>
+                <NavLink to="/dashboard/view_booked_session">
+                  <FaCalendarAlt className="mr-2" />
+                  View booked session
+                </NavLink>
+              </li>
 
-          {/* View Booked Session */}
-          <li>
-            <NavLink to="/dashboard/view_booked_session">
-              <FaCalendarAlt className="mr-2" />
-              View booked session
-            </NavLink>
-          </li>
+              {/* Create Note */}
+              <li>
+                <NavLink to="/dashboard/create_note">
+                  <FaStickyNote className="mr-2" />
+                  Create note
+                </NavLink>
+              </li>
 
-          {/* Create Note */}
-          <li>
-            <NavLink to="/dashboard/create_note">
-              <FaStickyNote className="mr-2" />
-              Create note
-            </NavLink>
-          </li>
+              {/* Manage Notes */}
+              <li>
+                <NavLink to="/dashboard/manage_notes">
+                  <FaStickyNote className="mr-2" />
+                  Manage notes
+                </NavLink>
+              </li>
 
-          {/* Manage Notes */}
-          <li>
-            <NavLink to="/dashboard/manage_notes">
-              <FaStickyNote className="mr-2" />
-              Manage notes
-            </NavLink>
-          </li>
-
-          {/* All Study Materials */}
-          <li>
-            <NavLink to="/dashboard/all_study_materials">
-              <FaBook className="mr-2" />
-              All study materials
-            </NavLink>
-          </li>
-
+              {/* All Study Materials */}
+              <li>
+                <NavLink to="/dashboard/all_study_materials">
+                  <FaBook className="mr-2" />
+                  All study materials
+                </NavLink>
+              </li>
+            </>
+          ) : (
+            ""
+          )}
+          {/* admin route  */}
           {/* View All Users */}
-          <li>
-            <NavLink to="/dashboard/view_all_users">
-              <FaUsers className="mr-2" />
-              View all users
-            </NavLink>
-          </li>
-          {/* manage_admins */}
-          <li>
-            <NavLink to="/dashboard/manage_admins">
-              <FaUserShield className="mr-2" />
-              Manage Admins
-            </NavLink>
-          </li>
 
-          <li>
-            <NavLink to="/dashboard/active_tutors">
-              <FaUserCheck className="mr-2" /> Active Tutors
-            </NavLink>
-          </li>
+          {isAdmin ? (
+            <>
+              {" "}
+              <li>
+                <NavLink to="/dashboard/view_all_users">
+                  <FaUsers className="mr-2" />
+                  View all users (a)
+                </NavLink>
+              </li>
+              {/* manage_admins */}
+              <li>
+                <NavLink to="/dashboard/manage_admins">
+                  <FaUserShield className="mr-2" />
+                  Manage Admins (a)
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/active_tutors">
+                  <FaUserCheck className="mr-2" /> Active Tutors (a)
+                </NavLink>
+              </li>
+              {/* Pending Tutors */}
+              <li>
+                <NavLink to="/dashboard/pending_tutors">
+                  <FaUserClock className="mr-2" />
+                  Pending tutors (a)
+                </NavLink>
+              </li>
+              {/* View All Study Sessions */}
+              <li>
+                <NavLink to="/dashboard/view_all_sessions">
+                  <FaChalkboardTeacher className="mr-2" />
+                  View all study sessions (a)
+                </NavLink>
+              </li>
+              {/* View All Materials */}
+              <li>
+                <NavLink to="/dashboard/view_all_materials">
+                  <FaRegFileAlt className="mr-2" />
+                  View all materials (a)
+                </NavLink>
+              </li>
+            </>
+          ) : (
+            " "
+          )}
 
-          {/* Pending Tutors */}
-          <li>
-            <NavLink to="/dashboard/pending_tutors">
-              <FaUserClock className="mr-2" />
-              Pending tutors
-            </NavLink>
-          </li>
-          {/* View All Study Sessions */}
-          <li>
-            <NavLink to="/dashboard/view_all_sessions">
-              <FaChalkboardTeacher className="mr-2" />
-              View all study sessions
-            </NavLink>
-          </li>
-
-          {/* View All Materials */}
-          <li>
-            <NavLink to="/dashboard/view_all_materials">
-              <FaRegFileAlt className="mr-2" />
-              View all materials
-            </NavLink>
-          </li>
+          {isTutor ? (
+            <>
+              {" "}
+              <li>
+                <NavLink to="/dashboard/create_study_session">
+                  <FaCalendarPlus className="mr-2" />
+                  Create Study Session (t)
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/upload_materials">
+                  <FaUpload className="mr-2" />
+                  Upload Materials (t)
+                </NavLink>
+              </li>
+            </>
+          ) : (
+            ""
+          )}
         </ul>
       </div>
     </div>

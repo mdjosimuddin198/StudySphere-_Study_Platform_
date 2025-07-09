@@ -11,6 +11,8 @@ import Dashboard from "../../layouts/dashboard/Dashboard";
 import PendingTutor from "../../layouts/dashboard/pendingTutor/PendingTutor";
 import ActiveTutor from "../../layouts/dashboard/activeTutor/ActiveTutor";
 import ManageAdmins from "../../layouts/dashboard/ManageAdmins/ManageAdmins";
+import Forbidden from "../../pages/forbidden/Forbidden";
+import AdminRoute from "../AdminRoute/AdminRoute";
 
 const Routes = createBrowserRouter([
   {
@@ -25,6 +27,10 @@ const Routes = createBrowserRouter([
             <BeATutor></BeATutor>
           </PrivetRoutes>
         ),
+      },
+      {
+        path: "forbidden",
+        Component: Forbidden,
       },
       {
         path: "about_us",
@@ -51,25 +57,25 @@ const Routes = createBrowserRouter([
       {
         path: "pending_tutors",
         element: (
-          <PrivetRoutes>
+          <AdminRoute>
             <PendingTutor></PendingTutor>
-          </PrivetRoutes>
+          </AdminRoute>
         ),
       },
       {
         path: "active_tutors",
         element: (
-          <PrivetRoutes>
+          <AdminRoute>
             <ActiveTutor></ActiveTutor>
-          </PrivetRoutes>
+          </AdminRoute>
         ),
       },
       {
         path: "manage_admins",
         element: (
-          <PrivetRoutes>
+          <AdminRoute>
             <ManageAdmins></ManageAdmins>
-          </PrivetRoutes>
+          </AdminRoute>
         ),
       },
     ],
