@@ -10,6 +10,7 @@ import BeATutor from "../../pages/beATutor/BeATutor";
 import Dashboard from "../../layouts/dashboard/Dashboard";
 import PendingTutor from "../../layouts/dashboard/pendingTutor/PendingTutor";
 import ActiveTutor from "../../layouts/dashboard/activeTutor/ActiveTutor";
+import ManageAdmins from "../../layouts/dashboard/ManageAdmins/ManageAdmins";
 
 const Routes = createBrowserRouter([
   {
@@ -60,6 +61,14 @@ const Routes = createBrowserRouter([
         element: (
           <PrivetRoutes>
             <ActiveTutor></ActiveTutor>
+          </PrivetRoutes>
+        ),
+      },
+      {
+        path: "manage_admins",
+        element: (
+          <PrivetRoutes>
+            <ManageAdmins></ManageAdmins>
           </PrivetRoutes>
         ),
       },

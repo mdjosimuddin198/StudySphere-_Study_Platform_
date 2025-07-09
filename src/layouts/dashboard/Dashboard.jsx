@@ -11,6 +11,7 @@ import {
   FaRegFileAlt,
   FaUserClock,
   FaUserCheck,
+  FaUserShield,
 } from "react-icons/fa";
 
 const Dashboard = () => {
@@ -103,6 +104,14 @@ const Dashboard = () => {
               View all users
             </NavLink>
           </li>
+          {/* manage_admins */}
+          <li>
+            <NavLink to="/dashboard/manage_admins">
+              <FaUserShield className="mr-2" />
+              Manage Admins
+            </NavLink>
+          </li>
+
           <li>
             <NavLink to="/dashboard/active_tutors">
               <FaUserCheck className="mr-2" /> Active Tutors
