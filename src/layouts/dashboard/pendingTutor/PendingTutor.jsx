@@ -21,8 +21,8 @@ const PendingTutor = () => {
 
   // Mutation for status update
   const statusMutation = useMutation({
-    mutationFn: ({ id, status }) =>
-      secureAxios.patch(`/tutors/status/${id}`, { status }),
+    mutationFn: async ({ id, status, email }) =>
+      await secureAxios.patch(`/tutors/status/${id}`, { status, email }),
     onSuccess: (data, variables) => {
       Swal.fire(
         "Success",
@@ -34,7 +34,7 @@ const PendingTutor = () => {
   });
 
   // Confirm status change (accept/reject)
-  const handleStatusUpdate = async (id, status) => {
+  const handleStatusUpdate = async (id, status, email) => {
     const result = await Swal.fire({
       title: `Are you sure you want to ${status} this tutor?`,
       icon: status === "approved" ? "question" : "warning",
@@ -45,7 +45,7 @@ const PendingTutor = () => {
     });
 
     if (result.isConfirmed) {
-      statusMutation.mutate({ id, status });
+      statusMutation.mutate({ id, status, email });
     }
   };
 
@@ -103,7 +103,9 @@ const PendingTutor = () => {
                 {/* Accept */}
                 <button
                   className="btn btn-sm btn-success"
-                  onClick={() => handleStatusUpdate(tutor._id, "approved")}
+                  onClick={() =>
+                    handleStatusUpdate(tutor._id, "approved", tutor.email)
+                  }
                   disabled={tutor.status !== "pending"}
                 >
                   <FaCheckCircle className="mr-1" /> Accept
@@ -112,7 +114,9 @@ const PendingTutor = () => {
                 {/* Reject */}
                 <button
                   className="btn btn-sm btn-error"
-                  onClick={() => handleStatusUpdate(tutor._id, "rejected")}
+                  onClick={() =>
+                    handleStatusUpdate(tutor._id, "rejected", tutor.email)
+                  }
                   disabled={tutor.status !== "pending"}
                 >
                   <FaTimesCircle className="mr-1" /> Reject
