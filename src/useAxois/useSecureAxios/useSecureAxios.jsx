@@ -1,10 +1,35 @@
 import axios from "axios";
+import { useEffect } from "react";
+import { useNavigate } from "react-router";
+
+const axiosSecure = axios.create({
+  baseURL: "http://localhost:5000",
+  withCredentials: true,
+});
 
 const useSecureAxios = () => {
-  const secureAxios = axios.create({
-    baseURL: "http://localhost:5000",
-  });
-  return secureAxios;
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const responseInterceptor = axiosSecure.interceptors.response.use(
+      (res) => res,
+      (err) => {
+        const status = err.response?.status;
+        if (status === 403) {
+          navigate("/forbidden");
+        } else if (status === 401) {
+          navigate("/login");
+        }
+        return Promise.reject(err);
+      }
+    );
+
+    return () => {
+      axiosSecure.interceptors.response.eject(responseInterceptor);
+    };
+  }, [navigate]);
+
+  return axiosSecure;
 };
 
 export default useSecureAxios;
