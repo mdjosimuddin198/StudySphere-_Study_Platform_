@@ -43,7 +43,7 @@ const Navbar = () => {
         HOME
       </NavLink>
       <NavLink className="ml-4" to="/be_a_tutor">
-        Be A Tutor
+        BE A TUTOR
       </NavLink>
 
       <NavLink className="ml-4" to="/dashboard">

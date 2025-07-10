@@ -13,6 +13,8 @@ import ActiveTutor from "../../layouts/dashboard/activeTutor/ActiveTutor";
 import ManageAdmins from "../../layouts/dashboard/ManageAdmins/ManageAdmins";
 import Forbidden from "../../pages/forbidden/Forbidden";
 import AdminRoute from "../AdminRoute/AdminRoute";
+import CreateStudySession from "../../pages/createStudySession/CreateStudySession";
+import PendingSessionsTable from "../../layouts/dashboard/ManageAdmins/pendingSessionsTable/PendingSessionsTable";
 
 const Routes = createBrowserRouter([
   {
@@ -77,6 +79,19 @@ const Routes = createBrowserRouter([
             <ManageAdmins></ManageAdmins>
           </AdminRoute>
         ),
+      },
+      {
+        path: "all_pending_sessions",
+        element: (
+          <AdminRoute>
+            <PendingSessionsTable></PendingSessionsTable>
+          </AdminRoute>
+        ),
+      },
+      // tutor route
+      {
+        path: "create_study_session",
+        element: <CreateStudySession></CreateStudySession>,
       },
     ],
   },

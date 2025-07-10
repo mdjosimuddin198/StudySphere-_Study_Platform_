@@ -144,7 +144,7 @@ const Dashboard = () => {
               </li>
               {/* View All Study Sessions */}
               <li>
-                <NavLink to="/dashboard/view_all_sessions">
+                <NavLink to="/dashboard/all_pending_sessions">
                   <FaChalkboardTeacher className="mr-2" />
                   View all study sessions (a)
                 </NavLink>
