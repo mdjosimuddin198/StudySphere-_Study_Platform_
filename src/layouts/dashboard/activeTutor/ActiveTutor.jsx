@@ -23,7 +23,7 @@ const ActiveTutor = () => {
   });
 
   // Reject tutor handler with confirmation
-  const handleReject = async (id) => {
+  const handleReject = async (id, email) => {
     const result = await Swal.fire({
       title: "Are you sure?",
       text: "You are about to reject this approved tutor.",
@@ -36,7 +36,10 @@ const ActiveTutor = () => {
 
     if (result.isConfirmed) {
       try {
-        await secureAxios.patch(`/tutors/status/${id}`, { status: "rejected" });
+        await secureAxios.patch(`/tutors/status/${id}`, {
+          status: "rejected",
+          email: email, // ✅ এখানে email পাঠানো হচ্ছে
+        });
         Swal.fire("Rejected!", "Tutor has been rejected.", "success");
         refetch(); // Re-fetch updated data
       } catch (error) {
@@ -118,7 +121,7 @@ const ActiveTutor = () => {
                 <td>
                   <button
                     className="btn btn-sm btn-error"
-                    onClick={() => handleReject(tutor._id)}
+                    onClick={() => handleReject(tutor._id, tutor.email)} // ✅ email পাঠানো হচ্ছে
                   >
                     <FaTimesCircle className="mr-1" /> Reject
                   </button>

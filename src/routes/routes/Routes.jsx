@@ -15,6 +15,8 @@ import Forbidden from "../../pages/forbidden/Forbidden";
 import AdminRoute from "../AdminRoute/AdminRoute";
 import CreateStudySession from "../../pages/createStudySession/CreateStudySession";
 import PendingSessionsTable from "../../layouts/dashboard/ManageAdmins/pendingSessionsTable/PendingSessionsTable";
+import StudySessionsList from "../../pages/studySessions/StudySessionsList";
+import StudySessionsDetails from "../../pages/studySessions/StudySessionsDetails";
 
 const Routes = createBrowserRouter([
   {
@@ -27,6 +29,22 @@ const Routes = createBrowserRouter([
         element: (
           <PrivetRoutes>
             <BeATutor></BeATutor>
+          </PrivetRoutes>
+        ),
+      },
+      {
+        path: "study_session",
+        element: (
+          <PrivetRoutes>
+            <StudySessionsList></StudySessionsList>
+          </PrivetRoutes>
+        ),
+      },
+      {
+        path: "study_session/:id",
+        element: (
+          <PrivetRoutes>
+            <StudySessionsDetails></StudySessionsDetails>
           </PrivetRoutes>
         ),
       },
