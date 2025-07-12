@@ -5,6 +5,7 @@ import { Pagination } from "swiper/modules";
 import { FaPlay } from "react-icons/fa";
 import FAQ_Section from "../../pages/FAQ/FAQ_Section";
 import Newsletter from "../../pages/newsletter/Newsletter";
+import StudyListHome from "../../pages/studyLIst/StudyListHome";
 
 const slidesData = [
   {
@@ -123,6 +124,7 @@ const HeroSlider = () => {
           ))}
         </Swiper>
       </div>
+      <StudyListHome></StudyListHome>
       <FAQ_Section></FAQ_Section>
       <Newsletter></Newsletter>
     </>

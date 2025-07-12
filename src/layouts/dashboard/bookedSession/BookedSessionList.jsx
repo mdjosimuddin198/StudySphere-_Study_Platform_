@@ -2,13 +2,13 @@ import { useQuery } from "@tanstack/react-query";
 import { FaStar } from "react-icons/fa";
 import { useParams } from "react-router";
 import Swal from "sweetalert2";
-import useAxois from "../../useAxois/useAxois";
-import useAuth from "../../hooks/useAuth";
-import useUserRole from "../../hooks/useUserRole/useUserRole";
-import Loading from "../../components/loading/Loading";
-import ReviewForm from "./ReviewForm";
+import ReviewForm from "../../../pages/studySessions/ReviewForm";
+import Loading from "../../../components/loading/Loading";
+import useAxois from "../../../useAxois/useAxois";
+import useAuth from "../../../hooks/useAuth";
+import useUserRole from "../../../hooks/useUserRole/useUserRole";
 
-const StudySessionsDetails = () => {
+const BookedSessionList = () => {
   const { id } = useParams();
   const axoisInstece = useAxois();
   const { logedInuser } = useAuth();
@@ -42,13 +42,13 @@ const StudySessionsDetails = () => {
       : "No rating";
 
   // 4️⃣ Check button condition
-  const now = new Date();
+  // const now = new Date();
 
-  const isUpcoming = new Date(session.registrationStartDate) > now;
-  const isClosed = new Date(session.registrationEndDate) < now;
-  const isNotAllowed = !logedInuser || isAdmin || isTutor;
+  // const isUpcoming = new Date(session.registrationStartDate) > now;
+  // const isClosed = new Date(session.registrationEndDate) < now;
+  // const isNotAllowed = !logedInuser || isAdmin || isTutor;
 
-  const isDisabled = isUpcoming || isClosed || isNotAllowed;
+  // const isDisabled = isUpcoming || isClosed || isNotAllowed;
 
   // 5️⃣ Book Now Handler
   const handleBookNow = async () => {
@@ -118,7 +118,7 @@ const StudySessionsDetails = () => {
               {new Date(session.classEndDate).toLocaleDateString()}
             </p>
           </div>
-          <div className="bg-base-200 p-4 rounded">
+          {/* <div className="bg-base-200 p-4 rounded">
             <p>
               <span className="font-bold">Duration:</span>{" "}
               {session.sessionDuration}
@@ -129,11 +129,11 @@ const StudySessionsDetails = () => {
                 ? "Free"
                 : `${session.registrationFee} ৳`}
             </p>
-          </div>
+          </div> */}
         </div>
 
         {/* Book Now Button */}
-        <button
+        {/* <button
           className="btn btn-primary w-full"
           disabled={isDisabled}
           onClick={handleBookNow}
@@ -145,7 +145,7 @@ const StudySessionsDetails = () => {
             : isNotAllowed
             ? "Not Allowed"
             : "Book Now"}
-        </button>
+        </button> */}
       </div>
 
       {/* Review Section */}
@@ -174,9 +174,9 @@ const StudySessionsDetails = () => {
           </div>
         )}
       </div>
-      {/* <ReviewForm sessionId={session._id} refetch={refetch}></ReviewForm> */}
+      <ReviewForm sessionId={session._id} refetch={refetch}></ReviewForm>
     </div>
   );
 };
 
-export default StudySessionsDetails;
+export default BookedSessionList;

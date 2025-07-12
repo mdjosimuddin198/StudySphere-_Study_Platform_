@@ -26,7 +26,7 @@ const StudySessionCard = ({ session }) => {
     });
 
   return (
-    <div className="max-w-md mx-auto bg-white rounded-lg shadow-md overflow-hidden border border-gray-300 my-4">
+    <div className="max-w-md mx-auto transition-transform duration-300 ease-in-out transform hover:-translate-y-2 hover:shadow-lg  bg-white rounded-lg shadow-md overflow-hidden border border-gray-300 my-4">
       <img
         src={imageURL}
         alt={sessionTitle}

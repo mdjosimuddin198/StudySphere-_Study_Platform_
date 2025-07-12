@@ -90,7 +90,7 @@ const LogIn = () => {
             <button className="btn btn-neutral mt-4">LogIn Now</button>
             <p className="text-sm ">
               Don't have account yet{" "}
-              <Link className="text-blue-400 underline" to="/auth/sign_up">
+              <Link className="text-blue-400 underline" to="/sign_up">
                 {"   "}
                 Register Now{" "}
               </Link>

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router";
 
 const AboutUS = () => {
   return (
@@ -51,7 +52,9 @@ const AboutUS = () => {
         </div>
 
         <div className="mt-10">
-          <button className="btn btn-primary">Join Us</button>
+          <Link to="/sign_up" className="btn btn-primary">
+            Join Us
+          </Link>
         </div>
       </div>
     </section>

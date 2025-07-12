@@ -1,12 +1,129 @@
-# React + Vite
+# 📘 Collaborative Study Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A **Full-Stack Web Application** that connects **Students**, **Tutors**, and **Admins** for effective **study session management**, **material sharing**, and **collaborative learning**.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## Expanding the ESLint configuration
+### 👨‍🎓 Student
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- ✅ View and book available study sessions
+- ✅ Access and download shared study materials
+- ✅ Apply to become a tutor
+- ✅ Create, manage, and delete personal notes
+
+### 🧑‍🏫 Tutor
+
+- ✅ Post new study sessions
+- ✅ Upload and manage educational materials
+
+### 🛡️ Admin
+
+- ✅ Approve or reject tutor applications
+- ✅ Manage all users (students, tutors, admins)
+- ✅ Search users by email
+- ✅ Assign or remove admin roles
+- ✅ View all booked sessions and uploaded study materials
+
+---
+
+## 🧩 Technologies Used
+
+### ⚛️ Frontend
+
+- **React.js**
+- **React Router DOM**
+- **Tailwind CSS** + **DaisyUI**
+- **Axios** + **TanStack Query**
+- **React Hook Form**
+- **SweetAlert2**
+
+### 🖥️ Backend
+
+- **Node.js** + **Express.js**
+- **MongoDB** (with **Mongoose**)
+- **jsonwebtoken (JWT)** for custom token-based verification
+- **Firebase Authentication**
+- Other Utilities: `cors`, `dotenv`, `helmet`, etc.
+
+---
+
+## 🔐 Authentication & Authorization
+
+- Firebase Authentication (Email/Password based)
+- Custom JWT tokens for secured API access
+- Role-based access control:
+  - **Student**: Limited access
+  - **Tutor**: Session and material management
+  - **Admin**: Full platform control
+
+---
+
+## ⚙️ Installation & Setup
+
+### 1️⃣ Clone the Repository
+
+```bash
+git clone https://github.com/your-username/collaborative-study-platform.git
+cd collaborative-study-platform
+```
+
+### 2️⃣ Set up Frontend
+
+```bash
+cd client
+npm install
+npm run dev
+```
+
+### 3️⃣ Set up Backend
+
+```bash
+cd server
+npm install
+npm run start
+```
+
+### 🔑 Environment Variables
+
+Create a `.env` file in both `client` and `server` folders:
+
+#### Server `.env`
+
+```
+PORT=5000
+DB_URI=your_mongo_db_connection_string
+JWT_SECRET=your_jwt_secret
+```
+
+#### Client `.env`
+
+```
+VITE_API_URL=http://localhost:5000
+VITE_FIREBASE_API_KEY=your_firebase_api_key
+```
+
+---
+
+---
+
+## 📌 Future Improvements
+
+- ✅ Chat between students and tutors
+- ✅ Advanced search and filter
+- ✅ Session reminders via email
+
+---
+
+## 🙌 Author
+
+**Md Josim Uddin**  
+Front-End Developer  
+[LinkedIn](https://www.linkedin.com/in/mdjosimuddin198/) | [Portfolio](https://josimuddin198.vercel.app/)
+
+---
+
+## 📝 License
+
+This project is licensed under the **MIT License**.

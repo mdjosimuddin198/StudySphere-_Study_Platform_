@@ -17,6 +17,8 @@ import CreateStudySession from "../../pages/createStudySession/CreateStudySessio
 import PendingSessionsTable from "../../layouts/dashboard/ManageAdmins/pendingSessionsTable/PendingSessionsTable";
 import StudySessionsList from "../../pages/studySessions/StudySessionsList";
 import StudySessionsDetails from "../../pages/studySessions/StudySessionsDetails";
+import MyBookedSessions from "../../layouts/dashboard/bookedSession/MyBookedSessions";
+import BookedSessionList from "../../layouts/dashboard/bookedSession/BookedSessionList";
 
 const Routes = createBrowserRouter([
   {
@@ -48,6 +50,16 @@ const Routes = createBrowserRouter([
           </PrivetRoutes>
         ),
       },
+
+      {
+        path: "booked_session/:id",
+        element: (
+          <PrivetRoutes>
+            <BookedSessionList></BookedSessionList>
+          </PrivetRoutes>
+        ),
+      },
+
       {
         path: "forbidden",
         Component: Forbidden,
@@ -74,6 +86,12 @@ const Routes = createBrowserRouter([
       </PrivetRoutes>
     ),
     children: [
+      // studern routes
+      {
+        path: "view_booked_session",
+        element: <MyBookedSessions></MyBookedSessions>,
+      },
+      // addmin route
       {
         path: "pending_tutors",
         element: (
