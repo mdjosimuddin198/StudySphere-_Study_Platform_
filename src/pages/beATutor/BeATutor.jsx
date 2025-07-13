@@ -85,6 +85,18 @@ const BeATutor = () => {
                 <p className="text-red-500 text-sm">{errors.email.message}</p>
               )}
             </div>
+            <div>
+              <label className="label">
+                <span className="label-text font-semibold">Image Url </span>
+              </label>
+              <input
+                type="url"
+                {...register("imageURL")}
+                value={logedInuser?.photoURL}
+                className="input input-bordered w-full"
+                readOnly
+              />
+            </div>
 
             {/* NID */}
             <div>

@@ -45,6 +45,9 @@ const Navbar = () => {
       <NavLink className="ml-4" to="/be_a_tutor">
         BE A TUTOR
       </NavLink>
+      <NavLink className="ml-4" to="/all_tutor">
+        VIEW ALL TUTOR
+      </NavLink>
       <NavLink className="ml-4" to="/study_session">
         STUDY SESSION
       </NavLink>
