@@ -19,6 +19,7 @@ import StudySessionsList from "../../pages/studySessions/StudySessionsList";
 import StudySessionsDetails from "../../pages/studySessions/StudySessionsDetails";
 import MyBookedSessions from "../../layouts/dashboard/bookedSession/MyBookedSessions";
 import BookedSessionList from "../../layouts/dashboard/bookedSession/BookedSessionList";
+import Payment from "../../pages/payment/Payment";
 
 const Routes = createBrowserRouter([
   {
@@ -56,6 +57,14 @@ const Routes = createBrowserRouter([
         element: (
           <PrivetRoutes>
             <BookedSessionList></BookedSessionList>
+          </PrivetRoutes>
+        ),
+      },
+      {
+        path: "payment/:id",
+        element: (
+          <PrivetRoutes>
+            <Payment></Payment>
           </PrivetRoutes>
         ),
       },
