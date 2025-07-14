@@ -11,7 +11,7 @@ const PendingSessionsTable = () => {
   const { data: sessions = [], isLoading } = useQuery({
     queryKey: ["pendingStudySessions"],
     queryFn: async () => {
-      const res = await axiosSecure.get("/study_session?status=pending");
+      const res = await axiosSecure.get("/study_session");
       return res.data;
     },
   });

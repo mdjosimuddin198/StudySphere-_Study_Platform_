@@ -23,6 +23,7 @@ import Payment from "../../pages/payment/Payment";
 import Tutor from "../../pages/tutor/Tutor";
 import MyStudySessions from "../../pages/tutorSession/MyStudySessions";
 import TutorRoute from "../tutorRoute/TutorRoute";
+import AllUsers from "../../layouts/dashboard/allUsers/AllUsers";
 
 const Routes = createBrowserRouter([
   {
@@ -109,6 +110,14 @@ const Routes = createBrowserRouter([
         element: <MyBookedSessions></MyBookedSessions>,
       },
       // addmin route
+      {
+        path: "view_all_users",
+        element: (
+          <AdminRoute>
+            <AllUsers></AllUsers>
+          </AdminRoute>
+        ),
+      },
       {
         path: "pending_tutors",
         element: (
