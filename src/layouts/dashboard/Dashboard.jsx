@@ -171,6 +171,12 @@ const Dashboard = () => {
                 </NavLink>
               </li>
               <li>
+                <NavLink to="/dashboard/approved_session">
+                  <FaCalendarPlus className="mr-2" />
+                  Approved Session(t)
+                </NavLink>
+              </li>
+              <li>
                 <NavLink to="/dashboard/upload_materials">
                   <FaUpload className="mr-2" />
                   Upload Materials (t)

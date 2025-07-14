@@ -21,6 +21,7 @@ import MyBookedSessions from "../../layouts/dashboard/bookedSession/MyBookedSess
 import BookedSessionList from "../../layouts/dashboard/bookedSession/BookedSessionList";
 import Payment from "../../pages/payment/Payment";
 import Tutor from "../../pages/tutor/Tutor";
+import MyStudySessions from "../../pages/tutorSession/MyStudySessions";
 
 const Routes = createBrowserRouter([
   {
@@ -143,6 +144,10 @@ const Routes = createBrowserRouter([
       {
         path: "create_study_session",
         element: <CreateStudySession></CreateStudySession>,
+      },
+      {
+        path: "approved_session",
+        element: <MyStudySessions></MyStudySessions>,
       },
     ],
   },

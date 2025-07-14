@@ -51,27 +51,35 @@ const BookedSessionList = () => {
   // const isDisabled = isUpcoming || isClosed || isNotAllowed;
 
   // 5️⃣ Book Now Handler
-  const handleBookNow = async () => {
-    if (!logedInuser) return;
+  // const handleBookNow = async () => {
+  //   if (!logedInuser) return;
 
-    if (session.registrationFee === 0) {
-      try {
-        await axoisInstece.post("/bookedSessions", {
-          studentEmail: logedInuser.email,
-          sessionId: session._id,
-          tutorEmail: session.tutorEmail,
-          sessionTitle: session.sessionTitle,
-          bookedAt: new Date(),
-        });
-        Swal.fire("Booked!", "You have booked the session.", "success");
-      } catch (error) {
-        Swal.fire("Error", "	You’ve already booked this session!", "error");
-      }
-    } else {
-      // Redirect to payment
-      window.location.href = `/payment/${session._id}`;
-    }
-  };
+  //   if (session.registrationFee === 0) {
+  //     try {
+  //       await axoisInstece.post("/bookedSessions", {
+  //         studentEmail: logedInuser.email,
+  //         sessionId: session._id,
+  //         tutorEmail: session.tutorEmail,
+  //         sessionTitle: session.sessionTitle,
+  //         bookedAt: new Date(),
+  //       });
+  //       Swal.fire("Booked!", "You have booked the session.", "success");
+  //     } catch (error) {
+  //       Swal.fire("Error", "	You’ve already booked this session!", "error");
+  //     }
+  //   } else {
+  //     // Redirect to payment
+  //     window.location.href = `/payment/${session._id}`;
+  //   }
+  // };
+
+  const { data: materials = [] } = useQuery({
+    queryKey: ["materials", id],
+    queryFn: async () => {
+      const res = await axoisInstece.get(`/materials?sessionId=${id}`);
+      return res.data;
+    },
+  });
 
   if (isRoleLoading) return <Loading></Loading>;
 
@@ -146,6 +154,54 @@ const BookedSessionList = () => {
             ? "Not Allowed"
             : "Book Now"}
         </button> */}
+      </div>
+
+      {/* View Materials Section */}
+      <div className="mt-8 bg-base-100 p-4 rounded-xl shadow">
+        <h3 className="text-xl font-bold mb-4 text-cyan-600">
+          Study Materials
+        </h3>
+
+        {materials.length === 0 ? (
+          <p className="text-gray-500">No materials uploaded yet.</p>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {materials.map((item) => (
+              <div
+                key={item._id}
+                className="border rounded-lg p-3 shadow bg-base-200"
+              >
+                <img
+                  src={item.imageUrl}
+                  alt={item.title}
+                  className="w-full h-40 object-cover rounded mb-2"
+                />
+                <h4 className="text-lg font-semibold">{item.title}</h4>
+
+                {/* Download Image Button */}
+                <a
+                  href={item.imageUrl}
+                  download={`${item.title.replace(/\s+/g, "_")}.jpg`}
+                  className="btn btn-outline btn-sm btn-success mt-2"
+                >
+                  Download Image
+                </a>
+
+                {/* Google Drive Link */}
+                <div className="mt-2">
+                  <a
+                    href={item.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-500 underline text-sm"
+                  >
+                    View Resource
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
 
       {/* Review Section */}
