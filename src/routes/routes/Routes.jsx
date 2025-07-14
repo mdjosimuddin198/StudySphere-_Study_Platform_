@@ -25,6 +25,8 @@ import MyStudySessions from "../../pages/tutorSession/MyStudySessions";
 import TutorRoute from "../tutorRoute/TutorRoute";
 import AllUsers from "../../layouts/dashboard/allUsers/AllUsers";
 import StudentRoute from "../studentRoute/StudentRoute";
+import CreateNote from "../../pages/createNote/CreateNote";
+import MyNotes from "../../pages/myNotes/MyNotes";
 
 const Routes = createBrowserRouter([
   {
@@ -113,6 +115,22 @@ const Routes = createBrowserRouter([
         element: (
           <StudentRoute>
             <MyBookedSessions></MyBookedSessions>
+          </StudentRoute>
+        ),
+      },
+      {
+        path: "create_note",
+        element: (
+          <StudentRoute>
+            <CreateNote></CreateNote>
+          </StudentRoute>
+        ),
+      },
+      {
+        path: "manage_notes",
+        element: (
+          <StudentRoute>
+            <MyNotes></MyNotes>
           </StudentRoute>
         ),
       },

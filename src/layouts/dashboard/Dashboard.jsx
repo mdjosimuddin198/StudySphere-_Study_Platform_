@@ -71,7 +71,7 @@ const Dashboard = () => {
           <li>
             <NavLink to="/">
               <FaHome className="mr-2" />
-              Home (allUser)
+              Home
             </NavLink>
           </li>
           {role === "user" ? (
@@ -97,14 +97,6 @@ const Dashboard = () => {
                 <NavLink to="/dashboard/manage_notes">
                   <FaStickyNote className="mr-2" />
                   Manage notes
-                </NavLink>
-              </li>
-
-              {/* All Study Materials */}
-              <li>
-                <NavLink to="/dashboard/all_study_materials">
-                  <FaBook className="mr-2" />
-                  All study materials
                 </NavLink>
               </li>
             </>
