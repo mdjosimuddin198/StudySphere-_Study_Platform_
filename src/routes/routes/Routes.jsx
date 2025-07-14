@@ -24,6 +24,7 @@ import Tutor from "../../pages/tutor/Tutor";
 import MyStudySessions from "../../pages/tutorSession/MyStudySessions";
 import TutorRoute from "../tutorRoute/TutorRoute";
 import AllUsers from "../../layouts/dashboard/allUsers/AllUsers";
+import StudentRoute from "../studentRoute/StudentRoute";
 
 const Routes = createBrowserRouter([
   {
@@ -35,17 +36,15 @@ const Routes = createBrowserRouter([
         path: "be_a_tutor",
         element: (
           <PrivetRoutes>
-            <BeATutor></BeATutor>
+            <StudentRoute>
+              <BeATutor></BeATutor>
+            </StudentRoute>
           </PrivetRoutes>
         ),
       },
       {
         path: "study_session",
-        element: (
-          <PrivetRoutes>
-            <StudySessionsList></StudySessionsList>
-          </PrivetRoutes>
-        ),
+        element: <StudySessionsList></StudySessionsList>,
       },
 
       {
@@ -61,7 +60,9 @@ const Routes = createBrowserRouter([
         path: "booked_session/:id",
         element: (
           <PrivetRoutes>
-            <BookedSessionList></BookedSessionList>
+            <StudentRoute>
+              <BookedSessionList></BookedSessionList>
+            </StudentRoute>
           </PrivetRoutes>
         ),
       },
@@ -73,7 +74,9 @@ const Routes = createBrowserRouter([
         path: "payment/:id",
         element: (
           <PrivetRoutes>
-            <Payment></Payment>
+            <StudentRoute>
+              <Payment></Payment>
+            </StudentRoute>
           </PrivetRoutes>
         ),
       },
@@ -107,7 +110,11 @@ const Routes = createBrowserRouter([
       // studern routes
       {
         path: "view_booked_session",
-        element: <MyBookedSessions></MyBookedSessions>,
+        element: (
+          <StudentRoute>
+            <MyBookedSessions></MyBookedSessions>
+          </StudentRoute>
+        ),
       },
       // addmin route
       {
