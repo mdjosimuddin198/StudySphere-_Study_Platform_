@@ -41,7 +41,13 @@ const MyStudySessions = () => {
             <p>
               <strong>Date:</strong> {session.classStartDate}
             </p>
+            <p>
+              <strong>status:</strong> {session.status}
+            </p>
             <button
+              disabled={
+                session.status === "pending" || session.status === "rejected"
+              }
               className="btn btn-outline btn-primary btn-sm mt-2"
               onClick={() => setSelectedSession(session)}
             >

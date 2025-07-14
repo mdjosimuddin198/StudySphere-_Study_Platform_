@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router";
+import useAuth from "../../hooks/useAuth";
+import useUserRole from "../../hooks/useUserRole/useUserRole";
 const StudySessionCard = ({ session }) => {
   const {
     _id,
@@ -17,6 +19,8 @@ const StudySessionCard = ({ session }) => {
     registrationFee,
     status,
   } = session;
+  const { logedInuser } = useAuth();
+  const { isRoleLoading, isAdmin, isTutor } = useUserRole();
 
   const formatDate = (dateStr) =>
     new Date(dateStr).toLocaleDateString("en-US", {
@@ -24,6 +28,13 @@ const StudySessionCard = ({ session }) => {
       month: "short",
       day: "numeric",
     });
+
+  const now = new Date();
+
+  const isUpcoming = new Date(registrationStartDate) > now;
+  const isClosed = new Date(registrationEndDate) < now;
+  const isNotAllowed = !logedInuser || isAdmin || isTutor;
+  const isDisabled = isUpcoming || isClosed || isNotAllowed;
 
   return (
     <div className="max-w-md mx-auto transition-transform duration-300 ease-in-out transform hover:-translate-y-2 hover:shadow-lg  bg-white rounded-lg shadow-md overflow-hidden border border-gray-300 my-4">
@@ -57,10 +68,18 @@ const StudySessionCard = ({ session }) => {
         </div>
         <Link
           to={`/study_session/${_id}`}
-          className="btn btn-primary text-white font-semibold  transition w-full md:w-auto"
+          className="btn btn-primary text-white  font-semibold  transition w-full"
         >
           Read More
         </Link>
+        {/* Book Now Button */}
+        <button
+          className="btn btn-primary mt-2 w-full"
+          // disabled={isDisabled}
+          // onClick={handleBookNow}
+        >
+          {isUpcoming ? "Upcoming" : isClosed ? "Closed" : "Ongoing"}
+        </button>
       </div>
     </div>
   );
