@@ -32,6 +32,56 @@ const PendingSessionsTable = () => {
     },
   });
 
+  const handleUpdate = async (session) => {
+    const { value: fee } = await Swal.fire({
+      title: "Update Registration Fee",
+      input: "number",
+      inputLabel: "Enter new registration fee",
+      inputValue: session.registrationFee || 0,
+      inputAttributes: {
+        min: 0,
+        step: 1,
+      },
+      showCancelButton: true,
+      confirmButtonText: "Update",
+      preConfirm: (value) => {
+        if (value < 0) {
+          Swal.showValidationMessage("Fee must be 0 or more");
+        }
+        return value;
+      },
+    });
+
+    if (fee !== undefined) {
+      mutation.mutate({
+        id: session._id,
+        status: "approved",
+        registrationFee: Number(fee),
+      });
+    }
+  };
+
+  const handleDelete = async (id) => {
+    const result = await Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    });
+
+    if (result.isConfirmed) {
+      try {
+        await axiosSecure.delete(`/study_session/${id}`);
+        queryClient.invalidateQueries(["pendingStudySessions"]);
+        Swal.fire("Deleted!", "The session has been deleted.", "success");
+      } catch (err) {
+        Swal.fire("Error", "Failed to delete the session.", "error");
+      }
+    }
+  };
+
   const handleStatusUpdate = async (id, status, currentFee = 0) => {
     if (status === "approved") {
       const { value: fee } = await Swal.fire({
@@ -108,29 +158,53 @@ const PendingSessionsTable = () => {
                   </span>
                 </td>
                 <td className="flex flex-col md:flex-row gap-2 justify-center">
-                  {/* Approve */}
-                  <button
-                    className="btn btn-sm btn-success"
-                    disabled={session.status !== "pending"}
-                    onClick={() =>
-                      handleStatusUpdate(
-                        session._id,
-                        "approved",
-                        session.registrationFee
-                      )
-                    }
-                  >
-                    <FaCheckCircle className="mr-1" /> Accept
-                  </button>
+                  {session.status === "pending" ? (
+                    <>
+                      {/* Approve */}
+                      <button
+                        className="btn btn-sm btn-success"
+                        onClick={() =>
+                          handleStatusUpdate(
+                            session._id,
+                            "approved",
+                            session.registrationFee
+                          )
+                        }
+                      >
+                        <FaCheckCircle className="mr-1" /> Accept
+                      </button>
 
-                  {/* Reject */}
-                  <button
-                    className="btn btn-sm btn-error"
-                    disabled={session.status !== "pending"}
-                    onClick={() => handleStatusUpdate(session._id, "rejected")}
-                  >
-                    <FaTimesCircle className="mr-1" /> Reject
-                  </button>
+                      {/* Reject */}
+                      <button
+                        className="btn btn-sm btn-error"
+                        onClick={() =>
+                          handleStatusUpdate(session._id, "rejected")
+                        }
+                      >
+                        <FaTimesCircle className="mr-1" /> Reject
+                      </button>
+                    </>
+                  ) : session.status === "approved" ? (
+                    <>
+                      {/* Update */}
+                      <button
+                        className="btn btn-sm btn-info"
+                        onClick={() => handleUpdate(session)}
+                      >
+                        ✏️ Update
+                      </button>
+
+                      {/* Delete */}
+                      <button
+                        className="btn btn-sm btn-outline btn-error"
+                        onClick={() => handleDelete(session._id)}
+                      >
+                        🗑️ Delete
+                      </button>
+                    </>
+                  ) : (
+                    <span className="text-gray-400 italic">No actions</span>
+                  )}
                 </td>
               </tr>
             ))}
