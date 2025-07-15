@@ -27,6 +27,7 @@ import AllUsers from "../../layouts/dashboard/allUsers/AllUsers";
 import StudentRoute from "../studentRoute/StudentRoute";
 import CreateNote from "../../pages/createNote/CreateNote";
 import MyNotes from "../../pages/myNotes/MyNotes";
+import MyMaterials from "../../layouts/dashboard/myMaterials/MyMaterials";
 
 const Routes = createBrowserRouter([
   {
@@ -175,6 +176,10 @@ const Routes = createBrowserRouter([
           </AdminRoute>
         ),
       },
+      {
+        path: "view_all_materials",
+        element: <MyMaterials></MyMaterials>,
+      },
       // tutor route
       {
         path: "create_study_session",
@@ -191,6 +196,11 @@ const Routes = createBrowserRouter([
             <MyStudySessions></MyStudySessions>
           </TutorRoute>
         ),
+      },
+
+      {
+        path: "upload_materials",
+        element: <MyMaterials></MyMaterials>,
       },
     ],
   },
