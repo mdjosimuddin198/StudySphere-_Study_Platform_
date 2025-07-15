@@ -47,7 +47,7 @@ const LogIn = () => {
         };
 
         const userRes = await axoisInstece.post("/users", userInfo);
-        console.log(userRes.data);
+        // console.log(userRes.data);
 
         navigate(`${location.state ? location.state : "/"}`);
         toast.success(`Loged In SuccessFully `);

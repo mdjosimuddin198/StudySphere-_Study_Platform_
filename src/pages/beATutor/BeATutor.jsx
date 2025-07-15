@@ -17,9 +17,9 @@ const BeATutor = () => {
 
   const onSubmit = (tutorData) => {
     tutorData.status = "pending";
-    console.log("Tutor Form Data:", tutorData);
+    // console.log("Tutor Form Data:", tutorData);
     secureAxios.post("/tutors", tutorData).then((result) => {
-      console.log(tutorData);
+      // console.log(tutorData);
       if (result.data.insertedId) {
         Swal.fire({
           icon: "success",

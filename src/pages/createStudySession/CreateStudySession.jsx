@@ -26,7 +26,7 @@ const CreateStudySession = () => {
 
     try {
       const res = await axoisInstece.post("/study_session", sessionData);
-      console.log(res.data);
+      // console.log(res.data);
       if (res.data?.insertedId) {
         Swal.fire({
           title: "Success!",

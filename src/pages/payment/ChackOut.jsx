@@ -14,7 +14,7 @@ const ChackOut = () => {
   const elements = useElements();
   const { logedInuser } = useAuth();
   const { id } = useParams();
-  console.log(id);
+  // console.log(id);
   const axoisInstece = useAxois();
 
   const { data } = useQuery({

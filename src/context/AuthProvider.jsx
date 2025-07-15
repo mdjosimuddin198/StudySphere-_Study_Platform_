@@ -39,7 +39,7 @@ const AuthProvider = ({ children }) => {
             withCredentials: true,
           })
           .then((res) => {
-            console.log("after jwt token ", res.data);
+            // console.log("after jwt token ", res.data);
           })
           .catch((err) => console.log(err));
       }

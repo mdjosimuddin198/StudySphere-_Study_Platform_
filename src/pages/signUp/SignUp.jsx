@@ -104,7 +104,7 @@ const SignUp = () => {
 
         navigate(`${location.state ? location.state : "/"}`);
         toast.success(`Loged In SuccessFully `);
-        console.log(result);
+        // console.log(result);
       })
       .catch((error) => {
         console.log(error);
@@ -114,7 +114,7 @@ const SignUp = () => {
 
   const handleImageUpload = async (e) => {
     const image = e.target.files[0];
-    console.log(image);
+    // console.log(image);
 
     const formData = new FormData();
     formData.append("image", image);
@@ -125,7 +125,7 @@ const SignUp = () => {
     const res = await axios.post(imagUploadUrl, formData);
 
     setProfilePic(res.data.data.url);
-    console.log(res.data);
+    // console.log(res.data);
   };
 
   return (

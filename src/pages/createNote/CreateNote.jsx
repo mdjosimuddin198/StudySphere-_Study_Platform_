@@ -21,7 +21,7 @@ const CreateNote = () => {
       email: logedInuser.email,
       createdAt: new Date(),
     };
-    console.log(noteData);
+    // console.log(noteData);
     try {
       await axoisInstece.post("/notes", noteData);
       Swal.fire("Success!", "Your note has been saved.", "success");
