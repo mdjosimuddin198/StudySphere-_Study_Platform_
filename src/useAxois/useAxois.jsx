@@ -2,7 +2,7 @@ import axios from "axios";
 
 const useAxois = () => {
   const axoisInstece = axios.create({
-    baseURL: "http://localhost:5000",
+    baseURL: "https://study-sphere-server-orpin.vercel.app",
     withCredentials: true,
   });
   return axoisInstece;

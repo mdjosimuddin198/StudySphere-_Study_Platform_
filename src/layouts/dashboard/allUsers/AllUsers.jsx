@@ -15,7 +15,9 @@ const AllUsers = () => {
   } = useQuery({
     queryKey: ["allUsers"],
     queryFn: async () => {
-      const res = await axiosSecure.get("http://localhost:5000/users");
+      const res = await axiosSecure.get(
+        "https://study-sphere-server-orpin.vercel.app/users"
+      );
       return res.data;
     },
   });

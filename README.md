@@ -17,6 +17,12 @@ A **Full-Stack Web Application** that connects **Students**, **Tutors**, and **A
 - ✅ Apply to become a tutor
 - ✅ Create, manage, and delete personal notes
 
+### ADMIN
+
+Admin email: josimuddin0504@gmail.com
+
+Admin password: AddminCanNotBeDenger45
+
 ### 🧑‍🏫 Tutor
 
 - ✅ Post new study sessions
@@ -104,7 +110,7 @@ JWT_SECRET=your_jwt_secret
 #### Client `.env`
 
 ```
-VITE_API_URL=http://localhost:5000
+VITE_API_URL=https://study-sphere-server-orpin.vercel.app
 VITE_FIREBASE_API_KEY=your_firebase_api_key
 ```
 
