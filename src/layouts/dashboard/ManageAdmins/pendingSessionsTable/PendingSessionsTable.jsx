@@ -18,10 +18,13 @@ const PendingSessionsTable = () => {
 
   // approve/reject mutation
   const mutation = useMutation({
-    mutationFn: async ({ id, status, registrationFee }) => {
+    mutationFn: async ({ id, status, registrationFee, feedback }) => {
       const body = { status };
       if (registrationFee !== undefined) {
         body.registrationFee = registrationFee;
+      }
+      if (feedback !== undefined) {
+        body.feedback = feedback;
       }
       const res = await axiosSecure.patch(`/study_session/${id}/status`, body);
       return res.data;
@@ -82,40 +85,32 @@ const PendingSessionsTable = () => {
     }
   };
 
-  const handleStatusUpdate = async (id, status, currentFee = 0) => {
-    if (status === "approved") {
-      const { value: fee } = await Swal.fire({
-        title: "Set Registration Fee",
-        input: "number",
-        inputLabel: "Enter the registration fee (can be 0)",
-        inputValue: currentFee || 0,
-        inputAttributes: {
-          min: 0,
-          step: 1,
-        },
-        showCancelButton: true,
-        confirmButtonText: "Approve",
-        preConfirm: (value) => {
-          if (value < 0) {
-            Swal.showValidationMessage("Fee must be 0 or more");
-          }
-          return value;
-        },
-      });
-
-      if (fee === undefined) return; // cancelled
-
-      mutation.mutate({ id, status, registrationFee: Number(fee) });
-    } else {
-      Swal.fire({
-        title: `Are you sure to ${status}?`,
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonText: `Yes, ${status}`,
-      }).then((res) => {
-        if (res.isConfirmed) {
-          mutation.mutate({ id, status });
+  const handleRejectWithFeedback = async (id) => {
+    const { value: formValues } = await Swal.fire({
+      title: "Reject Session",
+      html:
+        '<input id="swal-reason" class="swal2-input" placeholder="Rejection Reason">' +
+        '<textarea id="swal-feedback" class="swal2-textarea" placeholder="Feedback"></textarea>',
+      focusConfirm: false,
+      showCancelButton: true,
+      preConfirm: () => {
+        const reason = document.getElementById("swal-reason").value;
+        const feedback = document.getElementById("swal-feedback").value;
+        if (!reason || !feedback) {
+          Swal.showValidationMessage("Please provide both reason and feedback");
         }
+        return { reason, feedback };
+      },
+    });
+
+    if (formValues) {
+      mutation.mutate({
+        id,
+        status: "rejected",
+        feedback: {
+          reason: formValues.reason,
+          message: formValues.feedback,
+        },
       });
     }
   };
@@ -160,41 +155,32 @@ const PendingSessionsTable = () => {
                 <td className="flex flex-col md:flex-row gap-2 justify-center">
                   {session.status === "pending" ? (
                     <>
-                      {/* Approve */}
                       <button
                         className="btn btn-sm btn-success"
                         onClick={() =>
-                          handleStatusUpdate(
-                            session._id,
-                            "approved",
-                            session.registrationFee
-                          )
+                          handleUpdate({
+                            ...session,
+                            status: "approved",
+                          })
                         }
                       >
                         <FaCheckCircle className="mr-1" /> Accept
                       </button>
-
-                      {/* Reject */}
                       <button
                         className="btn btn-sm btn-error"
-                        onClick={() =>
-                          handleStatusUpdate(session._id, "rejected")
-                        }
+                        onClick={() => handleRejectWithFeedback(session._id)}
                       >
                         <FaTimesCircle className="mr-1" /> Reject
                       </button>
                     </>
                   ) : session.status === "approved" ? (
                     <>
-                      {/* Update */}
                       <button
                         className="btn btn-sm btn-info"
                         onClick={() => handleUpdate(session)}
                       >
                         ✏️ Update
                       </button>
-
-                      {/* Delete */}
                       <button
                         className="btn btn-sm btn-outline btn-error"
                         onClick={() => handleDelete(session._id)}

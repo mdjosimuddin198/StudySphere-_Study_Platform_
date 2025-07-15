@@ -165,7 +165,7 @@ const Dashboard = () => {
               <li>
                 <NavLink to="/dashboard/approved_session">
                   <FaCalendarPlus className="mr-2" />
-                  Approved Session(t)
+                  Manage My Sessions(t)
                 </NavLink>
               </li>
               <li>

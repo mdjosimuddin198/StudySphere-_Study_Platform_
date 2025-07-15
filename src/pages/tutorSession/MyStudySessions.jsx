@@ -10,6 +10,7 @@ const MyStudySessions = () => {
   const axoisInstece = useAxois();
   const { logedInuser } = useAuth();
   const [selectedSession, setSelectedSession] = useState(null);
+  const [showFeedbackSession, setShowFeedbackSession] = useState(null); // ফিডব্যাক দেখানোর জন্য
 
   const {
     data: sessions = [],
@@ -28,11 +29,8 @@ const MyStudySessions = () => {
   const handleResubmit = async (id) => {
     try {
       await axoisInstece.patch(`/study_session/resubmit/${id}`);
-      // success notification
       toast.success("Resubmitted successfully!");
-      // manually refetch data
       refetch();
-      // window.location.reload(); // অথবা useQuery এর refetch ইউজ করো যদি থাকে
     } catch (error) {
       console.error("Resubmit failed", error);
     }
@@ -59,8 +57,19 @@ const MyStudySessions = () => {
               <strong>Date:</strong> {session.classStartDate}
             </p>
             <p>
-              <strong>status:</strong> {session.status}
+              <strong>Status:</strong> {session.status}
             </p>
+
+            {/* যদি সেশন rejected হয় এবং feedback থাকে, তাহলে ফিডব্যাক দেখানোর বাটন */}
+            {session.status === "rejected" && session.feedback && (
+              <button
+                onClick={() => setShowFeedbackSession(session)}
+                className="btn btn-sm btn-warning mt-2 mr-2"
+              >
+                View Rejection Feedback
+              </button>
+            )}
+
             <button
               disabled={
                 session.status === "pending" || session.status === "rejected"
@@ -70,6 +79,7 @@ const MyStudySessions = () => {
             >
               Upload Materials
             </button>
+
             {session.status === "rejected" && (
               <button
                 onClick={() => handleResubmit(session._id)}
@@ -82,13 +92,44 @@ const MyStudySessions = () => {
         ))}
       </div>
 
-      {/* Modal */}
+      {/* Upload Material Modal */}
       {selectedSession && (
         <UploadMaterialModal
           session={selectedSession}
           tutorEmail={logedInuser.email}
           onClose={() => setSelectedSession(null)}
         />
+      )}
+
+      {/* Rejection Feedback Modal */}
+      {showFeedbackSession && (
+        <div
+          className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50"
+          onClick={() => setShowFeedbackSession(null)}
+        >
+          <div
+            className="bg-white p-6 rounded-md max-w-md w-full"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <h3 className="text-xl font-bold mb-4 text-red-600">
+              Rejection Feedback
+            </h3>
+            <p>
+              <strong>Reason:</strong>{" "}
+              {showFeedbackSession.feedback?.reason || "No reason provided"}
+            </p>
+            <p className="mt-2">
+              <strong>Feedback:</strong>{" "}
+              {showFeedbackSession.feedback?.message || "No feedback provided"}
+            </p>
+            <button
+              className="btn btn-sm btn-primary mt-4"
+              onClick={() => setShowFeedbackSession(null)}
+            >
+              Close
+            </button>
+          </div>
+        </div>
       )}
     </div>
   );
