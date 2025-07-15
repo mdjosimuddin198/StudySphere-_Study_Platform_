@@ -64,6 +64,10 @@ const StudySessionCard = ({ session }) => {
             <span className="badge badge-secondary">
               {registrationFee === 0 ? "Free" : `$${registrationFee}`}
             </span>
+            <span className="badge badge-secondary ml-4">
+              {" "}
+              {isUpcoming ? "Upcoming" : isClosed ? "Closed" : "Ongoing"}
+            </span>
           </p>
         </div>
         <Link
@@ -73,13 +77,6 @@ const StudySessionCard = ({ session }) => {
           Read More
         </Link>
         {/* Book Now Button */}
-        <button
-          className="btn btn-primary mt-2 w-full"
-          // disabled={isDisabled}
-          // onClick={handleBookNow}
-        >
-          {isUpcoming ? "Upcoming" : isClosed ? "Closed" : "Ongoing"}
-        </button>
       </div>
     </div>
   );

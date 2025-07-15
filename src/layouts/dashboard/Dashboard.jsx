@@ -112,40 +112,40 @@ const Dashboard = () => {
               <li>
                 <NavLink to="/dashboard/view_all_users">
                   <FaUsers className="mr-2" />
-                  View all users (a)
+                  View all users
                 </NavLink>
               </li>
               {/* manage_admins */}
               <li>
                 <NavLink to="/dashboard/manage_admins">
                   <FaUserShield className="mr-2" />
-                  Manage Admins (a)
+                  Manage Admins
                 </NavLink>
               </li>
               <li>
                 <NavLink to="/dashboard/active_tutors">
-                  <FaUserCheck className="mr-2" /> Active Tutors (a)
+                  <FaUserCheck className="mr-2" /> Active Tutors
                 </NavLink>
               </li>
               {/* Pending Tutors */}
               <li>
                 <NavLink to="/dashboard/pending_tutors">
                   <FaUserClock className="mr-2" />
-                  Pending tutors (a)
+                  Pending tutors
                 </NavLink>
               </li>
               {/* View All Study Sessions */}
               <li>
                 <NavLink to="/dashboard/all_pending_sessions">
                   <FaChalkboardTeacher className="mr-2" />
-                  View all study sessions (a)
+                  View all study sessions
                 </NavLink>
               </li>
               {/* View All Materials */}
               <li>
                 <NavLink to="/dashboard/view_all_materials">
                   <FaRegFileAlt className="mr-2" />
-                  View all materials (a)
+                  View all materials
                 </NavLink>
               </li>
             </>
@@ -159,19 +159,19 @@ const Dashboard = () => {
               <li>
                 <NavLink to="/dashboard/create_study_session">
                   <FaCalendarPlus className="mr-2" />
-                  Create Study Session (t)
+                  Create Study Session
                 </NavLink>
               </li>
               <li>
                 <NavLink to="/dashboard/approved_session">
                   <FaCalendarPlus className="mr-2" />
-                  Manage My Sessions(t)
+                  Manage My Sessions
                 </NavLink>
               </li>
               <li>
                 <NavLink to="/dashboard/upload_materials">
                   <FaUpload className="mr-2" />
-                  Upload Materials (t)
+                  Upload Materials
                 </NavLink>
               </li>
             </>
