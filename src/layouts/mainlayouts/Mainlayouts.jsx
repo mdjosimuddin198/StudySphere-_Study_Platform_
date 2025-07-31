@@ -6,7 +6,7 @@ import Footer from "../../components/shared/footer/Footer";
 const Mainlayouts = () => {
   return (
     <div>
-      <header className="sticky top-0 z-50 w-11/12 mx-auto">
+      <header className="sticky top-0 z-40 w-11/12 mx-auto">
         <Navbar></Navbar>
       </header>
       <main className="w-11/12 mx-auto">

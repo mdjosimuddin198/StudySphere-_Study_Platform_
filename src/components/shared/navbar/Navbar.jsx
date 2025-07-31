@@ -1,13 +1,32 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router";
 import { toast } from "react-toastify";
 import useAuth from "../../../hooks/useAuth";
 import Logo from "../logo/Logo";
+import { motion } from "framer-motion";
+import { FaBarsStaggered } from "react-icons/fa6";
+import { ImCross } from "react-icons/im";
 
 const drawerId = "my-drawer-4";
 const Navbar = () => {
+  const [isopen, setIsopen] = useState(false);
   const { logedInuser, setLogedInUser, logOutUser } = useAuth();
 
+  useEffect(() => {
+    if (isopen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    // Cleanup when component unmounts
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [isopen]);
+  const handleOpen = () => {
+    setIsopen((prv) => !prv);
+  };
   // const handleLogOutUser = () => {
   //   logOutUser()
   //     .then(() => {
@@ -24,7 +43,7 @@ const Navbar = () => {
       await logOutUser();
 
       // 2️⃣ Express এ কল দিয়ে কুকিতে থাকা টোকেনও clear করো
-      await fetch("https://study-sphere-server-orpin.vercel.app/api/logout", {
+      await fetch("http://localhost:5000/api/logout", {
         method: "POST",
         credentials: "include",
       });
@@ -39,33 +58,45 @@ const Navbar = () => {
 
   const links = (
     <>
-      <NavLink className="ml-4" to="/">
+      <NavLink onClick={handleOpen} className="ml-4" to="/">
         HOME
       </NavLink>
-      <NavLink className="ml-4" to="/be_a_tutor">
+      <NavLink onClick={handleOpen} className="ml-4" to="/be_a_tutor">
         BE A TUTOR
       </NavLink>
-      <NavLink className="ml-4" to="/all_tutor">
+      <NavLink onClick={handleOpen} className="ml-4" to="/all_tutor">
         VIEW ALL TUTOR
       </NavLink>
-      <NavLink className="ml-4" to="/study_session">
+      <NavLink onClick={handleOpen} className="ml-4" to="/study_session">
         STUDY SESSION
       </NavLink>
 
-      <NavLink className="ml-4" to="/dashboard">
+      <NavLink onClick={handleOpen} className="ml-4" to="/dashboard">
         DASHBOARD
       </NavLink>
 
-      <NavLink className="ml-4" to="/about_us">
+      <NavLink onClick={handleOpen} className="ml-4" to="/about_us">
         ABOUT US
       </NavLink>
     </>
   );
   return (
     <>
-      <div className="navbar bg-gray-700 my-6 rounded-2xl border-2 shadow-sm">
+      <motion.aside
+        initial={{ y: "-100%" }}
+        animate={{ y: isopen ? "0%" : "-140%" }}
+        ransition={{ duration: 1.0, ease: "easeIn" }}
+        className="md:hidden fixed pt-18   min-h-screen left-0 top-0 right-0 w-full bg-gray-700 text-white flex flex-col p-4 "
+      >
+        {links}
+      </motion.aside>
+
+      <div className="navbar bg-gray-700 my-6  rounded-2xl border-2 shadow-sm">
         <div className="navbar-start">
-          <div className="dropdown">
+          <button onClick={handleOpen} className="px-4 lg:hidden z-50">
+            {isopen ? <ImCross /> : <FaBarsStaggered />}
+          </button>
+          {/* <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -89,13 +120,13 @@ const Navbar = () => {
             >
               {links}
             </ul>
-          </div>
+          </div> */}
           <Logo></Logo>
         </div>
         <div className="navbar-center text-white hidden lg:flex">
           <ul className="menu menu-horizontal  px-1">{links}</ul>
         </div>
-        <div className="navbar-end z-50">
+        <div className="navbar-end z-40">
           {logedInuser ? (
             <div className="relative">
               {/* Profile Picture */}

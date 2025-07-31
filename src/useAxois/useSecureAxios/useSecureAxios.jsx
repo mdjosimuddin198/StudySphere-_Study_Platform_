@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router";
 
 const axiosSecure = axios.create({
-  baseURL: "https://study-sphere-server-orpin.vercel.app",
+  baseURL: "http://localhost:5000",
   withCredentials: true,
 });
 
