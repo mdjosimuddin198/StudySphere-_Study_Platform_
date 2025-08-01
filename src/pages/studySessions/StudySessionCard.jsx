@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { Link } from "react-router";
 import useAuth from "../../hooks/useAuth";
 import useUserRole from "../../hooks/useUserRole/useUserRole";
+import { useQuery } from "@tanstack/react-query";
+import useAxois from "../../useAxois/useAxois";
+import { FaStar } from "react-icons/fa";
 const StudySessionCard = ({ session }) => {
   const {
     _id,
@@ -19,6 +22,24 @@ const StudySessionCard = ({ session }) => {
     registrationFee,
     status,
   } = session;
+
+  const axoisInstece = useAxois();
+  const { data: reviews = [] } = useQuery({
+    queryKey: ["reviews", _id],
+    queryFn: async () => {
+      const res = await axoisInstece.get(`/reviews?sessionId=${_id}`);
+      return res.data;
+    },
+  });
+
+  const averageRating =
+    reviews.length > 0
+      ? (
+          reviews.reduce((sum, review) => sum + review.rating, 0) /
+          reviews.length
+        ).toFixed(1)
+      : "No rating";
+
   const { logedInuser } = useAuth();
   const { isRoleLoading, isAdmin, isTutor } = useUserRole();
 
@@ -37,14 +58,17 @@ const StudySessionCard = ({ session }) => {
   const isDisabled = isUpcoming || isClosed || isNotAllowed;
 
   return (
-    <div className="max-w-md mx-auto transition-transform duration-300 ease-in-out transform hover:-translate-y-2 hover:shadow-lg  bg-white rounded-lg shadow-md overflow-hidden border border-gray-300 my-4">
+    <div className="max-w-md mx-auto  bg-white rounded-lg shadow-md overflow-hidden border border-gray-300 my-4">
       <img
         src={imageURL}
         alt={sessionTitle}
-        className="w-full h-48 object-cover"
+        className="w-full h-48 transition-all duration-300 ease-in-out  hover:scale-110 hover:shadow-lg object-cover"
       />
+
       <div className="p-4">
-        <h2 className="text-xl text-cyan-600 font-bold mb-2">{sessionTitle}</h2>
+        <h2 className="text-xl w-full h-14 text-black font-bold  leading-snug line-clamp-2 mb-2">
+          {sessionTitle}
+        </h2>
         {/* <p className="text-gray-700 mb-3 line-clamp-3">{sessionDescription}</p> */}
         <div className="flex items-center mb-3">
           <img
@@ -54,9 +78,12 @@ const StudySessionCard = ({ session }) => {
           />
           <div>
             <p className="font-semibold text-cyan-600">{tutorName}</p>
+            <p className="text-cyan-600 flex items-center gap-1">
+              <FaStar /> {averageRating}
+            </p>
           </div>
         </div>
-        <hr className="border-1 mb-4 border-black" />
+        <hr className="border opacity-5 mb-4 border-black" />
         <div className="mb-3 flex items-center justify-between text-sm text-gray-600 space-y-1">
           <button className="text-2xl">
             {registrationFee === 0 ? "Free" : `$${registrationFee}`}
@@ -72,9 +99,9 @@ const StudySessionCard = ({ session }) => {
         </div>
         <Link
           to={`/study_session/${_id}`}
-          className="btn btn-primary text-white  font-semibold  transition w-full"
+          className="btn btn-outline hover:border-[#07A698] hover:bg-white text-black font-semibold  transition w-full"
         >
-          Read More
+          View Details
         </Link>
 
         {/* Book Now Button */}

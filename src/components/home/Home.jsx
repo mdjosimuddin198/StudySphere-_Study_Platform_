@@ -125,6 +125,7 @@ const HeroSlider = () => {
         </Swiper>
       </div>
       <StudyListHome></StudyListHome>
+      {/* <Courses></Courses> */}
       <FAQ_Section></FAQ_Section>
       <Newsletter></Newsletter>
     </>

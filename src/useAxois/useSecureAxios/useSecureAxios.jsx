@@ -18,7 +18,7 @@ const useSecureAxios = () => {
         if (status === 403) {
           navigate("/forbidden");
         } else if (status === 401) {
-          navigate("/login");
+          navigate("/log_in");
         }
         return Promise.reject(err);
       }

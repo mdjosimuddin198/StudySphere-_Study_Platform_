@@ -81,7 +81,7 @@ const LogIn = () => {
             />
             <div>
               <Link
-                to="/auth/login/forget-password"
+                // to="/auth/log_in/forget-password"
                 className="link link-hover text-blue-600"
               >
                 Forgot password?
