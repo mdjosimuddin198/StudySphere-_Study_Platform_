@@ -146,6 +146,17 @@ const StudySessionsDetails = () => {
             ? "Not Allowed"
             : "Book Now"}
         </button>
+        <button
+          onClick={handleBookNow}
+          className="text-2xl btn btn-primary my-2 w-full"
+        >
+          {" "}
+          {isNotAllowed
+            ? "Not Alowed"
+            : isClosed
+            ? "Watch the Recorded Session"
+            : null}
+        </button>
       </div>
 
       {/* Review Section */}

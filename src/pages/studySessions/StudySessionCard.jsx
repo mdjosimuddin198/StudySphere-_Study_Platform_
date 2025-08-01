@@ -45,8 +45,7 @@ const StudySessionCard = ({ session }) => {
       />
       <div className="p-4">
         <h2 className="text-xl text-cyan-600 font-bold mb-2">{sessionTitle}</h2>
-        <p className="text-gray-700 mb-3 line-clamp-3">{sessionDescription}</p>
-
+        {/* <p className="text-gray-700 mb-3 line-clamp-3">{sessionDescription}</p> */}
         <div className="flex items-center mb-3">
           <img
             src={tutorImag}
@@ -57,18 +56,19 @@ const StudySessionCard = ({ session }) => {
             <p className="font-semibold text-cyan-600">{tutorName}</p>
           </div>
         </div>
-
-        <div className="mb-3 text-sm text-gray-600 space-y-1">
-          <p>
-            <strong>Fee:</strong>{" "}
-            <span className="badge badge-secondary">
-              {registrationFee === 0 ? "Free" : `$${registrationFee}`}
-            </span>
-            <span className="badge badge-secondary ml-4">
-              {" "}
-              {isUpcoming ? "Upcoming" : isClosed ? "Closed" : "Ongoing"}
-            </span>
-          </p>
+        <hr className="border-1 mb-4 border-black" />
+        <div className="mb-3 flex items-center justify-between text-sm text-gray-600 space-y-1">
+          <button className="text-2xl">
+            {registrationFee === 0 ? "Free" : `$${registrationFee}`}
+          </button>
+          <button className="text-2xl">
+            {" "}
+            {isUpcoming
+              ? "Upcoming"
+              : isClosed
+              ? "Recorded Session"
+              : "Ongoing"}
+          </button>
         </div>
         <Link
           to={`/study_session/${_id}`}
@@ -76,6 +76,7 @@ const StudySessionCard = ({ session }) => {
         >
           Read More
         </Link>
+
         {/* Book Now Button */}
       </div>
     </div>
