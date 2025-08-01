@@ -56,7 +56,31 @@ const Navbar = () => {
     }
   };
 
-  const links = (
+  const largeDeviceView = (
+    <>
+      <NavLink className="ml-4" to="/">
+        HOME
+      </NavLink>
+      <NavLink className="ml-4" to="/be_a_tutor">
+        BE A TUTOR
+      </NavLink>
+      <NavLink className="ml-4" to="/all_tutor">
+        VIEW ALL TUTOR
+      </NavLink>
+      <NavLink className="ml-4" to="/study_session">
+        STUDY SESSION
+      </NavLink>
+
+      <NavLink className="ml-4" to="/dashboard">
+        DASHBOARD
+      </NavLink>
+
+      <NavLink className="ml-4" to="/about_us">
+        ABOUT US
+      </NavLink>
+    </>
+  );
+  const mobileView = (
     <>
       <NavLink onClick={handleOpen} className="ml-4" to="/">
         HOME
@@ -88,7 +112,7 @@ const Navbar = () => {
         ransition={{ duration: 1.0, ease: "easeIn" }}
         className="md:hidden fixed pt-18   min-h-screen left-0 top-0 right-0 w-full bg-gray-700 text-white flex flex-col p-4 "
       >
-        {links}
+        {mobileView}
       </motion.aside>
 
       <div className="navbar bg-gray-700 my-6  rounded-2xl border-2 shadow-sm">
@@ -124,7 +148,7 @@ const Navbar = () => {
           <Logo></Logo>
         </div>
         <div className="navbar-center text-white hidden lg:flex">
-          <ul className="menu menu-horizontal  px-1">{links}</ul>
+          <ul className="menu menu-horizontal  px-1">{largeDeviceView}</ul>
         </div>
         <div className="navbar-end z-40">
           {logedInuser ? (
