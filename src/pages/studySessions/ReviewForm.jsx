@@ -4,7 +4,7 @@ import useAxois from "../../useAxois/useAxois";
 import useAuth from "../../hooks/useAuth";
 import useUserRole from "../../hooks/useUserRole/useUserRole";
 
-const ReviewForm = ({ sessionId, refetch }) => {
+const ReviewForm = ({ sessionId, sessionTitle, refetch }) => {
   const { register, handleSubmit, reset } = useForm();
   const axoisInstece = useAxois();
   const { logedInuser } = useAuth();
@@ -13,12 +13,15 @@ const ReviewForm = ({ sessionId, refetch }) => {
   const onSubmit = async (data) => {
     const reviewData = {
       studentEmail: logedInuser.email,
+      studentName: logedInuser.displayName,
+      studentImg: logedInuser.photoURL,
+      sessionTitle: sessionTitle,
       sessionId: sessionId,
       rating: parseFloat(data.rating),
       comment: data.comment,
       createdAt: new Date(),
     };
-    console.log(reviewData);
+
     try {
       await axoisInstece.post("/reviews", reviewData);
       Swal.fire("Success!", "Your review has been submitted.", "success");
@@ -33,7 +36,7 @@ const ReviewForm = ({ sessionId, refetch }) => {
   if (role !== "user") return null;
 
   return (
-    <div className="bg-base-100 shadow p-4 rounded-xl mt-8">
+    <div className="bg-base-200 shadow p-4 rounded-xl mt-8">
       <h3 className="text-xl font-bold mb-4 text-cyan-600">Write a Review</h3>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
         {/* Rating */}

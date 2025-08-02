@@ -105,31 +105,18 @@ const StudySessionsDetails = () => {
         <p className="text-gray-500 mb-4">{session.sessionDescription}</p>
 
         {/* Info Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-          <div className="bg-base-200 p-4 rounded">
-            <p>
-              <span className="font-bold">Registration:</span>{" "}
-              {new Date(session.registrationStartDate).toLocaleDateString()} →{" "}
-              {new Date(session.registrationEndDate).toLocaleDateString()}
-            </p>
-            <p>
-              <span className="font-bold">Class Dates:</span>{" "}
-              {new Date(session.classStartDate).toLocaleDateString()} →{" "}
-              {new Date(session.classEndDate).toLocaleDateString()}
-            </p>
-          </div>
-          <div className="bg-base-200 p-4 rounded">
-            <p>
-              <span className="font-bold">Duration:</span>{" "}
-              {session.sessionDuration}
-            </p>
-            <p>
-              <span className="font-bold">Fee:</span>{" "}
-              {session.registrationFee === 0
-                ? "Free"
-                : `${session.registrationFee} ৳`}
-            </p>
-          </div>
+
+        <div className="bg-base-200 flex items-center justify-evenly p-4 my-4 rounded">
+          <p>
+            <span className="font-bold">Duration:</span>{" "}
+            {session.sessionDuration}
+          </p>
+          <p>
+            <span className="font-bold">Fee:</span>{" "}
+            {session.registrationFee === 0
+              ? "Free"
+              : `${session.registrationFee} ৳`}
+          </p>
         </div>
 
         {/* Book Now Button */}
@@ -156,11 +143,20 @@ const StudySessionsDetails = () => {
                 key={review._id}
                 className="border p-3 rounded bg-base-200 shadow-sm"
               >
-                <div className="flex items-center justify-between">
-                  <p className="font-semibold">{review.studentEmail}</p>
-                  <p className="text-yellow-500 flex items-center gap-1">
-                    <FaStar /> {review.rating}
-                  </p>
+                <div className=" flex items-center gap-5">
+                  <div className="w-12">
+                    <img
+                      className="rounded-full"
+                      src={review.studentImg}
+                      alt=""
+                    />
+                  </div>
+                  <div>
+                    <p className="font-semibold">{review.studentName}</p>
+                    <p className="text-yellow-500  flex items-center ">
+                      <FaStar /> {review.rating}
+                    </p>
+                  </div>
                 </div>
                 <p className="mt-2 text-sm">{review.comment}</p>
               </div>

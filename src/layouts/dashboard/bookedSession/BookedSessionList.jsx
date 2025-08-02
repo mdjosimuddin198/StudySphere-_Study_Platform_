@@ -85,7 +85,7 @@ const BookedSessionList = () => {
 
   return (
     <div className="p-4 max-w-5xl mx-auto">
-      <div className="bg-base-100 rounded-xl shadow p-6">
+      <div className="bg-base-200 rounded-xl shadow p-6">
         {/* Banner */}
         <img
           src={session.imageURL}
@@ -114,7 +114,7 @@ const BookedSessionList = () => {
 
         {/* Info Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-          <div className="bg-base-200 p-4 rounded">
+          {/* <div className="bg-base-200 p-4 rounded">
             <p>
               <span className="font-bold">Registration:</span>{" "}
               {new Date(session.registrationStartDate).toLocaleDateString()} →{" "}
@@ -125,7 +125,7 @@ const BookedSessionList = () => {
               {new Date(session.classStartDate).toLocaleDateString()} →{" "}
               {new Date(session.classEndDate).toLocaleDateString()}
             </p>
-          </div>
+          </div> */}
           {/* <div className="bg-base-200 p-4 rounded">
             <p>
               <span className="font-bold">Duration:</span>{" "}
@@ -157,7 +157,7 @@ const BookedSessionList = () => {
       </div>
 
       {/* View Materials Section */}
-      <div className="mt-8 bg-base-100 p-4 rounded-xl shadow">
+      <div className="mt-8 bg-base-200 p-4 rounded-xl shadow">
         <h3 className="text-xl font-bold mb-4 text-cyan-600">
           Study Materials
         </h3>
@@ -205,7 +205,7 @@ const BookedSessionList = () => {
       </div>
 
       {/* Review Section */}
-      <div className="mt-8 bg-base-100 p-4 rounded-xl shadow">
+      <div className="mt-8 bg-base-200 p-4 rounded-xl shadow">
         <h3 className="text-xl font-bold mb-4 text-cyan-600">
           Student Reviews
         </h3>
@@ -218,19 +218,33 @@ const BookedSessionList = () => {
                 key={review._id}
                 className="border p-3 rounded bg-base-200 shadow-sm"
               >
-                <div className="flex items-center justify-between">
-                  <p className="font-semibold">{review.studentEmail}</p>
-                  <p className="text-yellow-500 flex items-center gap-1">
-                    <FaStar /> {review.rating}
-                  </p>
+                <div className=" flex items-center gap-5">
+                  <div className="w-12">
+                    <img
+                      className="rounded-full"
+                      src={review.studentImg}
+                      alt=""
+                    />
+                  </div>
+                  <div>
+                    <p className="font-semibold">{review.studentName}</p>
+                    <p className="text-yellow-500  flex items-center ">
+                      <FaStar /> {review.rating}
+                    </p>
+                  </div>
                 </div>
+
                 <p className="mt-2 text-sm">{review.comment}</p>
               </div>
             ))}
           </div>
         )}
       </div>
-      <ReviewForm sessionId={session._id} refetch={refetch}></ReviewForm>
+      <ReviewForm
+        sessionId={session._id}
+        sessionTitle={session.sessionTitle}
+        refetch={refetch}
+      ></ReviewForm>
     </div>
   );
 };
