@@ -19,11 +19,12 @@ const CreateStudySession = () => {
     const sessionData = {
       ...data,
       tutorName: logedInuser.displayName,
+      tutorImag: logedInuser?.photoURL,
       tutorEmail: logedInuser.email,
       registrationFee: 0,
       status: "pending",
     };
-
+    console.log(sessionData);
     try {
       const res = await axoisInstece.post("/study_session", sessionData);
       // console.log(res.data);
@@ -44,17 +45,13 @@ const CreateStudySession = () => {
         confirmButtonText: "Close",
       });
     }
-
-    // console.log("Submitted session:", sessionData);
-
-    // reset();
   };
 
   return (
     <div className="max-w-3xl mx-auto p-6 bg-base-100 shadow-md rounded-md mt-8">
-      <h2 className="text-2xl font-bold mb-6 flex items-center gap-2 text-cyan-600">
-        <HiCheckCircle className="w-6 h-6 text-cyan-600" />
-        Create Study Session
+      <h2 className="text-2xl font-bold mb-6 flex items-center justify-center gap-2 text-cyan-600">
+        <HiCheckCircle className="w-6 h-6  text-cyan-600" />
+        Submit a course request to the administrator
       </h2>
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
@@ -78,48 +75,62 @@ const CreateStudySession = () => {
           )}
         </div>
 
-        {/* Tutor Name */}
-        <div>
-          <label className="label">
-            <span className="label-text font-semibold">Tutor Name</span>
-          </label>
-          <input
-            type="text"
-            value={logedInuser.displayName}
-            readOnly
-            className="input input-bordered w-full bg-base-200 cursor-not-allowed"
-          />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label className="label">
+              <span className="label-text font-semibold">Lessons</span>
+            </label>
+            <input
+              type="number"
+              {...register("lessons", {
+                required: "Session number is required",
+              })}
+              placeholder="Enter session number"
+              className="input input-bordered w-full"
+            />
+            {errors.sessionTitle && (
+              <p className="text-error text-sm mt-1">
+                {errors.sessionTitle.message}
+              </p>
+            )}
+          </div>
+          {/* catagory  */}
+          <div>
+            <label className="label">
+              <span className="label-text font-semibold">Select Catagory</span>
+            </label>
+            <select
+              {...register("sessionCatagory", {
+                required: "session catagory is required",
+              })}
+              className="select select-bordered w-full"
+              defaultValue=""
+            >
+              <option value="" disabled>
+                Select Catagory
+              </option>
+              <option value="Programming & Tech">Programming & Tech</option>
+              <option value="Business Management">Business Management</option>
+              <option value="Arts & Design">Arts & Design</option>
+              <option value="Personal Development">Personal Development</option>
+              <option value="Health & Fitness">Health & Fitness</option>
+              <option value="Marketing">Marketing</option>
+              <option value="Business & Finance">Business & Finance</option>
+              <option value="Computer Science">Computer Science</option>
+              <option value="Video & Photography">Video & Photography</option>
+              <option value="Data Science">Data Science</option>
+              <option value="IT Startup Agency">IT Startup Agency</option>
+              <option value="Software Company">Software Company</option>
+              <option value="High-Tech Company">High-Tech Company</option>
+              <option value="3D Gaming Studio">3D Gaming Studio</option>
+            </select>
+            {errors.sessionTitle && (
+              <p className="text-error text-sm mt-1">
+                {errors.sessionTitle.message}
+              </p>
+            )}
+          </div>
         </div>
-
-        <div>
-          <label className="label">
-            <span className="label-text font-semibold">Tutor Image </span>
-          </label>
-          <input
-            type="url"
-            {...register("tutorImag")}
-            className="input input-bordered w-full cursor-not-allowed"
-            value={logedInuser?.photoURL}
-            readOnly
-          />
-          {errors.imageURL && (
-            <p className="text-error text-sm mt-1">{errors.imageURL.message}</p>
-          )}
-        </div>
-
-        {/* Tutor Email */}
-        <div>
-          <label className="label">
-            <span className="label-text font-semibold">Tutor Email</span>
-          </label>
-          <input
-            type="email"
-            value={logedInuser.email}
-            readOnly
-            className="input input-bordered w-full bg-base-200 cursor-not-allowed"
-          />
-        </div>
-
         {/* Session Description */}
         <div>
           <label className="label">
@@ -162,8 +173,9 @@ const CreateStudySession = () => {
           )}
         </div>
 
+        {/* add this futures in future  */}
         {/* Registration Dates */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <label className="label">
               <span className="label-text font-semibold">
@@ -200,80 +212,44 @@ const CreateStudySession = () => {
               </p>
             )}
           </div>
-        </div>
+        </div> */}
 
-        {/* Class Dates */}
+        {/* Session Duration */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <label className="label">
-              <span className="label-text font-semibold">Class Start</span>
+              <span className="label-text font-semibold">Session Duration</span>
             </label>
             <input
-              type="datetime-local"
-              {...register("classStartDate", {
-                required: "Start date is required",
+              type="text"
+              {...register("sessionDuration", {
+                required: "Duration is required",
               })}
+              placeholder="e.g. 2 weeks, 10 days"
               className="input input-bordered w-full"
             />
-            {errors.classStartDate && (
+            {errors.sessionDuration && (
               <p className="text-error text-sm mt-1">
-                {errors.classStartDate.message}
+                {errors.sessionDuration.message}
               </p>
             )}
           </div>
+
+          {/* Registration Fee (Read-only) */}
           <div>
             <label className="label">
-              <span className="label-text font-semibold">Class End</span>
+              <span className="label-text font-semibold">Registration Fee</span>
             </label>
             <input
-              type="datetime-local"
-              {...register("classEndDate", {
-                required: "End date is required",
-              })}
-              className="input input-bordered w-full"
+              type="number"
+              value={0}
+              readOnly
+              className="input input-bordered w-full bg-base-200 cursor-not-allowed"
             />
-            {errors.classEndDate && (
-              <p className="text-error text-sm mt-1">
-                {errors.classEndDate.message}
-              </p>
-            )}
-          </div>
-        </div>
-
-        {/* Session Duration */}
-        <div>
-          <label className="label">
-            <span className="label-text font-semibold">Session Duration</span>
-          </label>
-          <input
-            type="text"
-            {...register("sessionDuration", {
-              required: "Duration is required",
-            })}
-            placeholder="e.g. 2 weeks, 10 days"
-            className="input input-bordered w-full"
-          />
-          {errors.sessionDuration && (
-            <p className="text-error text-sm mt-1">
-              {errors.sessionDuration.message}
+            <p className="text-xs text-cyan-600 mt-1">
+              Default is free. Admin can edit later.
             </p>
-          )}
-        </div>
-
-        {/* Registration Fee (Read-only) */}
-        <div>
-          <label className="label">
-            <span className="label-text font-semibold">Registration Fee</span>
-          </label>
-          <input
-            type="number"
-            value={0}
-            readOnly
-            className="input input-bordered w-full bg-base-200 cursor-not-allowed"
-          />
-          <p className="text-xs text-cyan-600 mt-1">
-            Default is free. Admin can edit later.
-          </p>
+          </div>
         </div>
 
         {/* Submit */}
@@ -282,7 +258,7 @@ const CreateStudySession = () => {
           className="btn btn-primary w-full flex items-center gap-2"
         >
           <HiCheckCircle className="w-5 h-5" />
-          Submit Session
+          Submit a Course Request
         </button>
       </form>
     </div>

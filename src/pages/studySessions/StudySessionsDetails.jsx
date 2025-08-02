@@ -42,13 +42,13 @@ const StudySessionsDetails = () => {
       : "No rating";
 
   // 4️⃣ Check button condition
-  const now = new Date();
+  // const now = new Date();
 
-  const isUpcoming = new Date(session.registrationStartDate) > now;
-  const isClosed = new Date(session.registrationEndDate) < now;
+  // const isUpcoming = new Date(session.registrationStartDate) > now;
+  // const isClosed = new Date(session.registrationEndDate) < now;
   const isNotAllowed = !logedInuser || isAdmin || isTutor;
 
-  const isDisabled = isUpcoming || isClosed || isNotAllowed;
+  const isDisabled = isNotAllowed;
 
   // 5️⃣ Book Now Handler
   const handleBookNow = async () => {
@@ -134,28 +134,11 @@ const StudySessionsDetails = () => {
 
         {/* Book Now Button */}
         <button
-          className="btn btn-primary w-full"
           disabled={isDisabled}
           onClick={handleBookNow}
+          className={`btn btn-primary w-full cursor-pointer`}
         >
-          {isUpcoming
-            ? "Upcoming Session"
-            : isClosed
-            ? "Registration Closed"
-            : isNotAllowed
-            ? "Not Allowed"
-            : "Book Now"}
-        </button>
-        <button
-          onClick={handleBookNow}
-          className="text-2xl btn btn-primary my-2 w-full"
-        >
-          {" "}
-          {isNotAllowed
-            ? "Not Alowed"
-            : isClosed
-            ? "Watch the Recorded Session"
-            : null}
+          {isNotAllowed ? "Not Allowed" : "Enroll Now"}
         </button>
       </div>
 
