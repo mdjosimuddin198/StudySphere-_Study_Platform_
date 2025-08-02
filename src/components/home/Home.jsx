@@ -6,6 +6,7 @@ import { FaPlay } from "react-icons/fa";
 import FAQ_Section from "../../pages/FAQ/FAQ_Section";
 import Newsletter from "../../pages/newsletter/Newsletter";
 import StudyListHome from "../../pages/studyLIst/StudyListHome";
+import RoadMap from "./roadmap/RoadMap";
 
 const slidesData = [
   {
@@ -125,7 +126,7 @@ const HeroSlider = () => {
         </Swiper>
       </div>
       <StudyListHome></StudyListHome>
-      {/* <Courses></Courses> */}
+      <RoadMap></RoadMap>
       <FAQ_Section></FAQ_Section>
       <Newsletter></Newsletter>
     </>

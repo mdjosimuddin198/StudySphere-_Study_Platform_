@@ -1,0 +1,112 @@
+[
+  {
+    "title": "Web Developer",
+    "skills": [
+      "HTML & CSS Basics",
+      "JavaScript Essentials",
+      "Version Control (Git/GitHub)",
+      "React Framework",
+      "Node.js + Express",
+      "MongoDB",
+      "Deployment",
+      "Portfolio Projects",
+      "Internship → Job"
+    ],
+    "recommendedClasses": [
+      "Intro to Web Design",
+      "JavaScript Mastery",
+      "React + Node Bootcamp",
+      "MongoDB for Developers"
+    ]
+  },
+  {
+    "title": "UI/UX Designer",
+    "skills": [
+      "Design Principles",
+      "Wireframing & Prototyping",
+      "Figma & Adobe XD",
+      "User Research",
+      "Accessibility",
+      "Responsive Design",
+      "Portfolio Projects"
+    ],
+    "recommendedClasses": [
+      "Intro to UI/UX",
+      "Figma Essentials",
+      "Design Systems Basics",
+      "User Testing & Feedback"
+    ]
+  },
+  {
+    "title": "Data Scientist",
+    "skills": [
+      "Python Programming",
+      "Statistics & Probability",
+      "Data Visualization",
+      "Pandas & NumPy",
+      "Machine Learning",
+      "Deep Learning Basics",
+      "Data Storytelling"
+    ],
+    "recommendedClasses": [
+      "Python for Data Science",
+      "Statistics with Python",
+      "Machine Learning Crash Course",
+      "Data Visualization Mastery"
+    ]
+  },
+  {
+    "title": "Mobile App Developer",
+    "skills": [
+      "Java/Kotlin (Android)",
+      "Swift (iOS)",
+      "Flutter Framework",
+      "React Native",
+      "App Deployment",
+      "Push Notifications",
+      "App Store Optimization"
+    ],
+    "recommendedClasses": [
+      "Android Development Basics",
+      "iOS Development with Swift",
+      "React Native Bootcamp",
+      "Flutter Essentials"
+    ]
+  },
+  {
+    "title": "DevOps Engineer",
+    "skills": [
+      "Linux Basics",
+      "Shell Scripting",
+      "CI/CD Pipelines",
+      "Docker & Containers",
+      "Kubernetes Basics",
+      "Cloud Platforms (AWS/Azure)",
+      "Monitoring & Logging"
+    ],
+    "recommendedClasses": [
+      "Linux for Beginners",
+      "Docker & Kubernetes Bootcamp",
+      "CI/CD with Jenkins",
+      "AWS Cloud Practitioner"
+    ]
+  },
+  {
+    "title": "Cybersecurity Specialist",
+    "skills": [
+      "Network Fundamentals",
+      "Cryptography Basics",
+      "Ethical Hacking",
+      "Penetration Testing",
+      "Security Compliance",
+      "Incident Response",
+      "Threat Analysis"
+    ],
+    "recommendedClasses": [
+      "Intro to Cybersecurity",
+      "Network Security Essentials",
+      "Ethical Hacking Bootcamp",
+      "Penetration Testing Basics"
+    ]
+  }
+]

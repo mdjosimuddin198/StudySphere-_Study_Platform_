@@ -68,7 +68,7 @@ const Navbar = () => {
         VIEW ALL TUTOR
       </NavLink>
       <NavLink className="ml-4" to="/study_session">
-        STUDY SESSION
+        COURSES
       </NavLink>
 
       <NavLink className="ml-4" to="/dashboard">
@@ -92,7 +92,7 @@ const Navbar = () => {
         VIEW ALL TUTOR
       </NavLink>
       <NavLink onClick={handleOpen} className="ml-4" to="/study_session">
-        STUDY SESSION
+        COURSES
       </NavLink>
 
       <NavLink onClick={handleOpen} className="ml-4" to="/dashboard">
