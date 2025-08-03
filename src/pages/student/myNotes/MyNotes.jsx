@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
 import { useForm } from "react-hook-form";
-import useAuth from "../../hooks/useAuth";
-import useAxois from "../../useAxois/useAxois";
+import useAuth from "../../../hooks/useAuth";
+import useAxois from "../../../useAxois/useAxois";
 
 const MyNotes = () => {
   const { logedInuser } = useAuth();

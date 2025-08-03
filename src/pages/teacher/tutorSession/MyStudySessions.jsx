@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import useAuth from "../../hooks/useAuth";
-import useAxois from "../../useAxois/useAxois";
-import UploadMaterialModal from "./UploadMaterialModal"; // modal component
-import Loading from "../../components/loading/Loading";
+import useAxois from "../../../useAxois/useAxois";
+import useAuth from "../../../hooks/useAuth";
+import Loading from "../../../components/loading/Loading";
+import UploadMaterialModal from "./UploadMaterialModal";
 import { toast } from "react-toastify";
 
 const MyStudySessions = () => {

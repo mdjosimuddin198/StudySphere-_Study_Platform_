@@ -1,9 +1,9 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { HiCheckCircle, HiOutlineClipboardList } from "react-icons/hi";
-import useAuth from "../../hooks/useAuth";
-import useAxois from "../../useAxois/useAxois";
 import Swal from "sweetalert2";
+import useAxois from "../../../useAxois/useAxois";
+import useAuth from "../../../hooks/useAuth";
 
 const CreateStudySession = () => {
   const axoisInstece = useAxois();

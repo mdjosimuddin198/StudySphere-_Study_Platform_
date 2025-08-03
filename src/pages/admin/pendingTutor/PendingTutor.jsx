@@ -53,7 +53,7 @@ const PendingTutor = () => {
 
   return (
     <div className="overflow-x-auto p-4 bg-base-100 rounded-xl shadow">
-      <h2 className="text-2xl font-bold mb-4 text-center text-orange-600">
+      <h2 className="text-2xl font-bold mb-4 text-center text-[#00acc1]">
         Pending Tutor Applications
       </h2>
 

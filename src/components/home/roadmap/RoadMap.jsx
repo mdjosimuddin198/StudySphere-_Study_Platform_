@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import learningPaths from "../../../../public/learningPaths.json";
+import learningPaths from "../../../assets/roadmapDemoData/learningPaths.json";
 const RoadMap = () => {
   console.log(learningPaths);
   return (

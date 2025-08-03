@@ -3,10 +3,10 @@ import { Link, useLocation, useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import { FcGoogle } from "react-icons/fc";
 import Lottie from "lottie-react";
-import loginINLottei from "../../assets/LottieFiles/LoginLottie.json";
+import loginINLottei from "../../../assets/LottieFiles/LoginLottie.json";
 
-import useAuth from "../../hooks/useAuth";
-import useAxois from "../../useAxois/useAxois";
+import useAuth from "../../../hooks/useAuth";
+import useAxois from "../../../useAxois/useAxois";
 
 const LogIn = () => {
   const axoisInstece = useAxois();

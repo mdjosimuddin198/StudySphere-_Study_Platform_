@@ -1,8 +1,8 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
-import useAuth from "../../hooks/useAuth";
-import useAxois from "../../useAxois/useAxois";
+import useAuth from "../../../hooks/useAuth";
+import useAxois from "../../../useAxois/useAxois";
 
 const CreateNote = () => {
   const { logedInuser } = useAuth();

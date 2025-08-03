@@ -1,7 +1,7 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import Swal from "sweetalert2";
 import { FaCheckCircle, FaTimesCircle } from "react-icons/fa";
-import useSecureAxios from "../../../../useAxois/useSecureAxios/useSecureAxios";
+import useSecureAxios from "../../../useAxois/useSecureAxios/useSecureAxios";
 
 const PendingSessionsTable = () => {
   const axiosSecure = useSecureAxios();

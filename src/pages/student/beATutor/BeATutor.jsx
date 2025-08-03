@@ -1,9 +1,9 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import useAuth from "../../hooks/useAuth";
-import useSecureAxios from "../../useAxois/useSecureAxios/useSecureAxios";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
+import useAuth from "../../../hooks/useAuth";
+import useSecureAxios from "../../../useAxois/useSecureAxios/useSecureAxios";
 
 const BeATutor = () => {
   const { logedInuser } = useAuth();

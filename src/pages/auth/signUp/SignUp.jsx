@@ -5,9 +5,9 @@ import { FiEyeOff } from "react-icons/fi";
 import { BsEye } from "react-icons/bs";
 import { toast } from "react-toastify";
 import { FcGoogle } from "react-icons/fc";
-import useAuth from "../../hooks/useAuth";
+import useAuth from "../../../hooks/useAuth";
 import axios from "axios";
-import useAxois from "../../useAxois/useAxois";
+import useAxois from "../../../useAxois/useAxois";
 
 // import { Helmet } from "react-helmet";
 
