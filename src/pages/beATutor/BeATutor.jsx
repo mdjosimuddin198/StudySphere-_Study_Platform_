@@ -46,7 +46,7 @@ const BeATutor = () => {
 
         {/* Form Section */}
         <div className="p-8 order-2 md:order-1">
-          <h2 className="text-3xl font-bold text-cyan-600 mb-6 text-center">
+          <h2 className="text-3xl font-bold text-[#00E1FF] mb-6 text-center">
             Be a Tutor
           </h2>
 
@@ -206,7 +206,10 @@ const BeATutor = () => {
             </div>
 
             {/* Submit */}
-            <button type="submit" className="btn btn-primary w-full mt-4">
+            <button
+              type="submit"
+              className="btn bg-[#00E1FF] text-black w-full mt-4"
+            >
               Submit Application
             </button>
           </form>

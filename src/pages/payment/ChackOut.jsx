@@ -126,7 +126,7 @@ const ChackOut = () => {
       <CardElement className="p-2 border rounded-2xl"></CardElement>
       <button
         type="submit"
-        className="btn btn-primary w-full"
+        className="btn bg-[#00E1FF] text-black w-full"
         disabled={!stripe}
       >
         pay ${amount}

@@ -114,7 +114,9 @@ const ManageAdmins = () => {
                     <button
                       onClick={() => handleRoleChange(u._id, u.role || "user")}
                       className={`btn btn-sm ${
-                        u.role === "admin" ? "btn-error" : "btn-primary"
+                        u.role === "admin"
+                          ? "btn-error"
+                          : "bg-[#00E1FF] text-black"
                       }`}
                     >
                       {u.role === "admin" ? (

@@ -77,8 +77,8 @@ const StudySessionCard = ({ session }) => {
             className="w-12 h-12 rounded-full mr-3 object-cover"
           />
           <div>
-            <p className="font-semibold text-cyan-600">{tutorName}</p>
-            <p className="text-cyan-600 flex items-center gap-1">
+            <p className="font-semibold text-[#00E1FF]">{tutorName}</p>
+            <p className="text-[#00E1FF] flex items-center gap-1">
               <FaStar /> {averageRating}
             </p>
           </div>
@@ -88,20 +88,20 @@ const StudySessionCard = ({ session }) => {
           <button className="text-2xl">
             {registrationFee === 0 ? "Free" : `$${registrationFee}`}
           </button>
-          <button className="text-2xl">
+          {/* <button className="text-2xl">
             {" "}
             {isUpcoming
               ? "Upcoming"
               : isClosed
               ? "Recorded Session"
               : "Ongoing"}
-          </button>
+          </button> */}
         </div>
         <Link
           to={`/study_session/${_id}`}
           className="btn btn-outline hover:border-[#07A698] hover:bg-white text-black font-semibold  transition w-full"
         >
-          View Details
+          Enroll Now
         </Link>
 
         {/* Book Now Button */}

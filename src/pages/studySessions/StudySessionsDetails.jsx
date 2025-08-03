@@ -86,7 +86,7 @@ const StudySessionsDetails = () => {
         />
 
         {/* Title + Tutor Info */}
-        <h2 className="text-3xl font-bold text-cyan-600 mb-2">
+        <h2 className="text-3xl font-bold text-[#00E1FF] mb-2">
           {session.sessionTitle}
         </h2>
         <div className="flex items-center gap-4 mb-4">
@@ -96,7 +96,7 @@ const StudySessionsDetails = () => {
             alt="Tutor"
           />
           <p className="font-semibold">{session.tutorName}</p>
-          <p className="text-yellow-500 flex items-center gap-1">
+          <p className="text-[#00E1FF] flex items-center gap-1">
             <FaStar /> {averageRating}
           </p>
         </div>
@@ -120,18 +120,28 @@ const StudySessionsDetails = () => {
         </div>
 
         {/* Book Now Button */}
+        {/* <button
+          disabled={isDisabled}
+          onClick={handleBookNow}
+          className={`btn btn-outline font-bold w-full cursor-pointer`}
+        >
+          {isNotAllowed ? "Not Allowed" : "Enroll Now"}
+        </button> */}
         <button
           disabled={isDisabled}
           onClick={handleBookNow}
-          className={`btn btn-primary w-full cursor-pointer`}
+          class="relative h-12 w-full overflow-hidden border border-[#00E1FF] font-bold shadow-2xl transition-all duration-200 before:absolute before:bottom-0 before:left-0 before:right-0 before:top-0 before:m-auto before:h-0 before:w-0 before:rounded-sm before:bg-[#00E1FF]  before:duration-300 before:ease-out hover:text-black hover:shadow-[#00E1FF] hover:before:h-40 hover:before:w-full hover:before:opacity-80"
         >
-          {isNotAllowed ? "Not Allowed" : "Enroll Now"}
+          <span class="relative z-10">
+            {" "}
+            {isNotAllowed ? "Not Allowed" : "Enroll Now"}
+          </span>
         </button>
       </div>
 
       {/* Review Section */}
       <div className="mt-8 bg-base-100 p-4 rounded-xl shadow">
-        <h3 className="text-xl font-bold mb-4 text-cyan-600">
+        <h3 className="text-xl font-bold mb-4 text-[#00E1FF]">
           Student Reviews
         </h3>
         {reviews.length === 0 ? (
@@ -153,7 +163,7 @@ const StudySessionsDetails = () => {
                   </div>
                   <div>
                     <p className="font-semibold">{review.studentName}</p>
-                    <p className="text-yellow-500  flex items-center ">
+                    <p className="text-[#00E1FF]  flex items-center ">
                       <FaStar /> {review.rating}
                     </p>
                   </div>

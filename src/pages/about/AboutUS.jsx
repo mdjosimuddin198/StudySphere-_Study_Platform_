@@ -5,18 +5,18 @@ const AboutUS = () => {
   return (
     <section className="py-12 px-4 bg-base-100">
       <div className="max-w-6xl mx-auto text-center">
-        <h2 className="text-4xl font-bold mb-6 text-cyan-600">About Us</h2>
+        <h2 className="text-4xl font-bold mb-6 text-[#00E1FF]">About Us</h2>
         <p className="text-lg mb-8 ">
           Welcome to{" "}
-          <span className="font-semibold text-cyan-600">StudySphere</span>, your
-          collaborative study companion designed to bring students, tutors, and
-          administrators together on a single, streamlined platform.
+          <span className="font-semibold text-[#00E1FF]">StudySphere</span>,
+          your collaborative study companion designed to bring students, tutors,
+          and administrators together on a single, streamlined platform.
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="card bg-base-200 shadow-xl">
             <div className="card-body">
-              <h3 className="text-2xl font-semibold text-cyan-600 mb-2">
+              <h3 className="text-2xl font-semibold text-[#00E1FF] mb-2">
                 Our Mission
               </h3>
               <p>
@@ -28,7 +28,7 @@ const AboutUS = () => {
 
           <div className="card bg-base-200 shadow-xl">
             <div className="card-body">
-              <h3 className="text-2xl font-semibold text-cyan-600 mb-2">
+              <h3 className="text-2xl font-semibold text-[#00E1FF] mb-2">
                 Our Vision
               </h3>
               <p>
@@ -40,7 +40,7 @@ const AboutUS = () => {
 
           <div className="card bg-base-200 shadow-xl">
             <div className="card-body">
-              <h3 className="text-2xl font-semibold text-cyan-600 mb-2">
+              <h3 className="text-2xl font-semibold text-[#00E1FF] mb-2">
                 Our Goal
               </h3>
               <p>
@@ -52,7 +52,7 @@ const AboutUS = () => {
         </div>
 
         <div className="mt-10">
-          <Link to="/sign_up" className="btn btn-primary">
+          <Link to="/sign_up" className="btn bg-[#00E1FF] text-black">
             Join Us
           </Link>
         </div>

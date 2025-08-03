@@ -94,7 +94,7 @@ const BookedSessionList = () => {
         />
 
         {/* Title + Tutor Info */}
-        <h2 className="text-3xl font-bold text-cyan-600 mb-2">
+        <h2 className="text-3xl font-bold text-[#00E1FF] mb-2">
           {session.sessionTitle}
         </h2>
         <div className="flex items-center gap-4 mb-4">
@@ -104,7 +104,7 @@ const BookedSessionList = () => {
             alt="Tutor"
           />
           <p className="font-semibold">{session.tutorName}</p>
-          <p className="text-yellow-500 flex items-center gap-1">
+          <p className="text-[#00E1FF] flex items-center gap-1">
             <FaStar /> {averageRating}
           </p>
         </div>
@@ -142,7 +142,7 @@ const BookedSessionList = () => {
 
         {/* Book Now Button */}
         {/* <button
-          className="btn btn-primary w-full"
+          className="btn bg-[#00E1FF] text-black w-full"
           disabled={isDisabled}
           onClick={handleBookNow}
         >
@@ -158,7 +158,7 @@ const BookedSessionList = () => {
 
       {/* View Materials Section */}
       <div className="mt-8 bg-base-200 p-4 rounded-xl shadow">
-        <h3 className="text-xl font-bold mb-4 text-cyan-600">
+        <h3 className="text-xl font-bold mb-4 text-[#00E1FF]">
           Study Materials
         </h3>
 
@@ -206,7 +206,7 @@ const BookedSessionList = () => {
 
       {/* Review Section */}
       <div className="mt-8 bg-base-200 p-4 rounded-xl shadow">
-        <h3 className="text-xl font-bold mb-4 text-cyan-600">
+        <h3 className="text-xl font-bold mb-4 text-[#00E1FF]">
           Student Reviews
         </h3>
         {reviews.length === 0 ? (
@@ -228,7 +228,7 @@ const BookedSessionList = () => {
                   </div>
                   <div>
                     <p className="font-semibold">{review.studentName}</p>
-                    <p className="text-yellow-500  flex items-center ">
+                    <p className="text-[#00E1FF]  flex items-center ">
                       <FaStar /> {review.rating}
                     </p>
                   </div>

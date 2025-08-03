@@ -49,8 +49,8 @@ const CreateStudySession = () => {
 
   return (
     <div className="max-w-3xl mx-auto p-6 bg-base-100 shadow-md rounded-md mt-8">
-      <h2 className="text-2xl font-bold mb-6 flex items-center justify-center gap-2 text-cyan-600">
-        <HiCheckCircle className="w-6 h-6  text-cyan-600" />
+      <h2 className="text-2xl font-bold mb-6 flex items-center justify-center gap-2 text-[#00E1FF]">
+        <HiCheckCircle className="w-6 h-6  text-[#00E1FF]" />
         Submit a course request to the administrator
       </h2>
 
@@ -246,7 +246,7 @@ const CreateStudySession = () => {
               readOnly
               className="input input-bordered w-full bg-base-200 cursor-not-allowed"
             />
-            <p className="text-xs text-cyan-600 mt-1">
+            <p className="text-xs text-[#00E1FF] mt-1">
               Default is free. Admin can edit later.
             </p>
           </div>
@@ -255,7 +255,7 @@ const CreateStudySession = () => {
         {/* Submit */}
         <button
           type="submit"
-          className="btn btn-primary w-full flex items-center gap-2"
+          className="btn bg-[#00E1FF] text-black w-full flex items-center gap-2"
         >
           <HiCheckCircle className="w-5 h-5" />
           Submit a Course Request

@@ -45,7 +45,7 @@ const StudyListHome = () => {
 
   return (
     <div className=" mx-auto p-4">
-      <h1 className="text-4xl text-center font-bold text-cyan-600 mb-6">
+      <h1 className="text-4xl text-center font-bold text-[#00E1FF] mb-6">
         Explore Featured Courses
       </h1>
       <div className="w-full">
@@ -92,10 +92,10 @@ const StudyListHome = () => {
                       className="w-12 h-12 rounded-full mr-3 object-cover"
                     />
                     <div>
-                      <p className="font-semibold text-cyan-600">
+                      <p className="font-semibold text-[#00E1FF]">
                         {slide.tutorName}
                       </p>
-                      <p className="text-cyan-600 flex items-center gap-1">
+                      <p className="text-[#00E1FF] flex items-center gap-1">
                         <FaStar /> {slide.averageRating}
                       </p>
                     </div>
@@ -107,19 +107,19 @@ const StudyListHome = () => {
                         ? "Free"
                         : `$${slide.registrationFee}`}
                     </button>
-                    <button className="text-2xl">
+                    {/* <button className="text-2xl">
                       {slide.isUpcoming
                         ? "Upcoming"
                         : slide.isClosed
                         ? "Recorded Session"
                         : "Ongoing"}
-                    </button>
+                    </button> */}
                   </div>
                   <Link
                     to={`/study_session/${slide._id}`}
                     className="btn btn-outline hover:border-[#07A698] hover:bg-white text-black font-semibold  transition w-full"
                   >
-                    View Details
+                    Enroll Now
                   </Link>
 
                   {/* Book Now Button */}

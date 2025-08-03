@@ -69,7 +69,7 @@ const MyNotes = () => {
 
   return (
     <div className="max-w-5xl mx-auto p-4">
-      <h2 className="text-2xl font-bold text-cyan-600 mb-4">
+      <h2 className="text-2xl font-bold text-[#00E1FF] mb-4">
         My Personal Notes
       </h2>
 
@@ -109,7 +109,7 @@ const MyNotes = () => {
       {isModalOpen && editingNote && (
         <dialog open className="modal modal-bottom sm:modal-middle">
           <div className="modal-box">
-            <h3 className="font-bold text-lg text-cyan-600 mb-4">
+            <h3 className="font-bold text-lg text-[#00E1FF] mb-4">
               Update Note
             </h3>
 
@@ -134,7 +134,7 @@ const MyNotes = () => {
               )}
 
               <div className="modal-action">
-                <button type="submit" className="btn btn-primary">
+                <button type="submit" className="btn bg-[#00E1FF] text-black">
                   Save
                 </button>
                 <button

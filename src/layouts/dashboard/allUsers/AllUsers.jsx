@@ -25,7 +25,7 @@ const AllUsers = () => {
 
   return (
     <div className="overflow-x-auto bg-white shadow rounded-lg p-4">
-      <h2 className="text-xl font-semibold text-cyan-600 mb-4">All Users</h2>
+      <h2 className="text-xl font-semibold text-[#00E1FF] mb-4">All Users</h2>
 
       <table className="table w-full">
         <thead className="bg-cyan-100">

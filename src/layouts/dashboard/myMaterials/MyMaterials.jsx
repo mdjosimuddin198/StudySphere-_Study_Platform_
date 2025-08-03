@@ -59,7 +59,7 @@ const MyMaterials = () => {
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
-      <h2 className="text-3xl font-bold text-center text-cyan-600 mb-6">
+      <h2 className="text-3xl font-bold text-center text-[#00E1FF] mb-6">
         {isAdmin ? "All Materials" : "My Materials"}
       </h2>
 
@@ -89,7 +89,7 @@ const MyMaterials = () => {
                     href={material.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn btn-primary btn-sm"
+                    className="btn bg-[#00E1FF] text-black btn-sm"
                   >
                     View Material
                   </a>

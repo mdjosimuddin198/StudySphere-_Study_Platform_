@@ -45,7 +45,7 @@ const UploadMaterialModal = ({ session, tutorEmail, onClose }) => {
   return (
     <div className="fixed inset-0 bg-black bg-opacity-40 flex justify-center items-center z-50">
       <div className="bg-white p-6 rounded shadow-lg w-full max-w-lg space-y-4">
-        <h3 className="text-xl font-bold text-cyan-600 mb-2">
+        <h3 className="text-xl font-bold text-[#00E1FF] mb-2">
           Upload Materials
         </h3>
         <form onSubmit={handleUpload} className="space-y-3">
@@ -88,7 +88,7 @@ const UploadMaterialModal = ({ session, tutorEmail, onClose }) => {
             <button type="button" className="btn btn-outline" onClick={onClose}>
               Cancel
             </button>
-            <button type="submit" className="btn btn-primary">
+            <button type="submit" className="btn bg-[#00E1FF] text-black">
               Upload
             </button>
           </div>

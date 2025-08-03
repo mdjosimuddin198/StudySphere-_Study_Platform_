@@ -58,10 +58,10 @@ const HeroSlider = () => {
                   <h1 className="text-4xl md:text-5xl font-bold leading-tight">
                     {slide.title} <br />
                     the world’s{" "}
-                    <span className="text-cyan-600">{slide.highlight}</span>
+                    <span className="text-[#00E1FF]">{slide.highlight}</span>
                   </h1>
                   <div className="flex items-center gap-5 mt-4">
-                    <button className="btn btn-primary btn-lg">
+                    <button className="btn bg-[#00E1FF] text-black btn-lg">
                       Get Started
                     </button>
                     <button className="flex items-center gap-2 text-lg">

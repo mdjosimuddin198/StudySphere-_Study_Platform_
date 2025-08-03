@@ -40,7 +40,7 @@ const MyStudySessions = () => {
 
   return (
     <div className="max-w-5xl mx-auto py-8 px-4">
-      <h2 className="text-3xl font-bold text-cyan-600 text-center mb-6">
+      <h2 className="text-3xl font-bold text-[#00E1FF] text-center mb-6">
         My all Study Sessions
       </h2>
       <div className="space-y-4">
@@ -74,7 +74,7 @@ const MyStudySessions = () => {
               disabled={
                 session.status === "pending" || session.status === "rejected"
               }
-              className="btn btn-outline btn-primary btn-sm mt-2"
+              className="btn btn-outline bg-[#00E1FF] text-black btn-sm mt-2"
               onClick={() => setSelectedSession(session)}
             >
               Upload Materials
@@ -123,7 +123,7 @@ const MyStudySessions = () => {
               {showFeedbackSession.feedback?.message || "No feedback provided"}
             </p>
             <button
-              className="btn btn-sm btn-primary mt-4"
+              className="btn btn-sm bg-[#00E1FF] text-black mt-4"
               onClick={() => setShowFeedbackSession(null)}
             >
               Close

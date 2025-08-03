@@ -33,7 +33,9 @@ const CreateNote = () => {
 
   return (
     <div className="max-w-xl mx-auto mt-8 p-6 bg-base-100 shadow rounded">
-      <h2 className="text-2xl font-bold text-cyan-600 mb-4">Create New Note</h2>
+      <h2 className="text-2xl font-bold text-[#00E1FF] mb-4">
+        Create New Note
+      </h2>
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
         {/* Email (read-only) */}
@@ -65,7 +67,7 @@ const CreateNote = () => {
           <p className="text-red-500 text-sm">Description is required</p>
         )}
 
-        <button type="submit" className="btn btn-primary w-full">
+        <button type="submit" className="btn bg-[#00E1FF] text-black w-full">
           Save Note
         </button>
       </form>

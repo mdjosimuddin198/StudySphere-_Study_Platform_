@@ -130,7 +130,7 @@ const PendingTutor = () => {
       {/* View Modal */}
       <dialog id="tutor_modal" className="modal">
         <div className="modal-box">
-          <h3 className="font-bold text-lg text-cyan-600 mb-2">
+          <h3 className="font-bold text-lg text-[#00E1FF] mb-2">
             Tutor Details
           </h3>
           {selectedTutor && (

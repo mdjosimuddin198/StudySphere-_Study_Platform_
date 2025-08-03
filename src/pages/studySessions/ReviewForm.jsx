@@ -37,7 +37,7 @@ const ReviewForm = ({ sessionId, sessionTitle, refetch }) => {
 
   return (
     <div className="bg-base-200 shadow p-4 rounded-xl mt-8">
-      <h3 className="text-xl font-bold mb-4 text-cyan-600">Write a Review</h3>
+      <h3 className="text-xl font-bold mb-4 text-[#00E1FF]">Write a Review</h3>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
         {/* Rating */}
         <div>
@@ -65,7 +65,9 @@ const ReviewForm = ({ sessionId, sessionTitle, refetch }) => {
           />
         </div>
 
-        <button className="btn btn-primary w-full">Submit Review</button>
+        <button className="btn bg-[#00E1FF] text-black w-full">
+          Submit Review
+        </button>
       </form>
     </div>
   );

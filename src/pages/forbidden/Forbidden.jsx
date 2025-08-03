@@ -10,7 +10,7 @@ const Forbidden = () => {
       <p className="text-lg mt-2 text-gray-600">
         You do not have permission to access this page.
       </p>
-      <Link to="/" className="btn btn-primary mt-6">
+      <Link to="/" className="btn bg-[#00E1FF] text-black mt-6">
         ⬅ Back to Home
       </Link>
     </div>

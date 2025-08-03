@@ -10,9 +10,9 @@ const Newsletter = () => {
     toast.warn("Stay connected. Exciting features are on the way!");
   };
   return (
-    <section className="py-6 px-8  bg-gray-200  rounded-2xl mx-auto">
+    <section className="py-6 px-8  bg-base-200 my-4 rounded-2xl mx-auto">
       <div className="text-center mb-8">
-        <h2 className="text-5xl font-bold mb-4 text-cyan-600">
+        <h2 className="text-5xl font-bold mb-4 text-[#00E1FF]">
           Subscribe to Our Newsletter
         </h2>
         <p className="text-gray-600 text-lg max-w-2xl mx-auto">
@@ -33,7 +33,7 @@ const Newsletter = () => {
         />
         <button
           type="submit"
-          className="btn btn-primary text-white font-semibold px-6 py-3 transition w-full md:w-auto"
+          className="btn bg-[#00E1FF] text-black text-white font-semibold px-6 py-3 transition w-full md:w-auto"
         >
           Subscribe
         </button>
