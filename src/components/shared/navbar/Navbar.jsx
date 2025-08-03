@@ -110,7 +110,7 @@ const Navbar = () => {
         initial={{ y: "-100%" }}
         animate={{ y: isopen ? "0%" : "-140%" }}
         ransition={{ duration: 1.0, ease: "easeIn" }}
-        className="md:hidden fixed pt-18   min-h-screen left-0 top-0 right-0 w-full bg-gray-700 text-white flex flex-col p-4 "
+        className="lg:hidden fixed pt-18   min-h-screen left-0 top-0 right-0 w-full bg-gray-700 text-white flex flex-col p-4 "
       >
         {mobileView}
       </motion.aside>
