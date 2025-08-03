@@ -43,7 +43,7 @@ const Tutor = () => {
               <img
                 src={tutor.imageURL}
                 alt={tutor.name}
-                className="w-full h-56 object-cover rounded-t-xl"
+                className="w-full h-60 object-cover rounded-t-xl"
               />
             </figure>
             <div className="card-body space-y-2">

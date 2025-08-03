@@ -13,6 +13,7 @@ import Loading from "../../components/loading/Loading";
 import { useQuery } from "@tanstack/react-query";
 import { FaStar } from "react-icons/fa";
 import { Link } from "react-router";
+import { FaBookOpen, FaUserGraduate } from "react-icons/fa6";
 
 const StudyListHome = () => {
   const axiosSecure = useSecureAxios();
@@ -81,9 +82,21 @@ const StudyListHome = () => {
                 />
 
                 <div className="p-4">
+                  <div className="badge bg-[#00E1FF70] text-black my-3 badge-outline">
+                    {slide?.sessionCatagory}
+                  </div>
                   <h2 className="text-xl w-full h-14 text-black font-bold  leading-snug line-clamp-2 mb-2">
                     {slide.sessionTitle}
                   </h2>
+
+                  <div className="flex items-center py-2 text-gray-500 justify-between">
+                    <p className="flex items-center gap-3">
+                      <FaBookOpen /> Lessons {slide?.lessons}
+                    </p>
+                    <p className="flex items-center gap-3">
+                      <FaUserGraduate /> coming soon
+                    </p>
+                  </div>
                   {/* <p className="text-gray-700 mb-3 line-clamp-3">{sessionDescription}</p> */}
                   <div className="flex items-center mb-3">
                     <img
@@ -102,7 +115,8 @@ const StudyListHome = () => {
                   </div>
                   <hr className="border opacity-5 mb-4 border-black" />
                   <div className="mb-3 flex items-center justify-between text-sm text-gray-600 space-y-1">
-                    <button className="text-2xl">
+                    <button className="text-2xl font-bold">
+                      <span className=" font-semibold">Price :</span>
                       {slide.registrationFee === 0
                         ? "Free"
                         : `$${slide.registrationFee}`}

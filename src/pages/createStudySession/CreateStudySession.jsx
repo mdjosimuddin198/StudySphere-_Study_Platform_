@@ -121,8 +121,7 @@ const CreateStudySession = () => {
               <option value="Data Science">Data Science</option>
               <option value="IT Startup Agency">IT Startup Agency</option>
               <option value="Software Company">Software Company</option>
-              <option value="High-Tech Company">High-Tech Company</option>
-              <option value="3D Gaming Studio">3D Gaming Studio</option>
+              <option value="Web Design">Web Design</option>
             </select>
             {errors.sessionTitle && (
               <p className="text-error text-sm mt-1">

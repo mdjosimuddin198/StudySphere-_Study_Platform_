@@ -131,10 +131,12 @@ const BeATutor = () => {
                 className="select select-bordered w-full"
               >
                 <option value="">Select a subject</option>
-                <option value="English">English</option>
-                <option value="Math">Math</option>
-                <option value="Physics">Physics</option>
-                <option value="Biology">Biology</option>
+                <option value="Computer Science ">Computer Science </option>
+                <option value="Data Scientist">Data Scientist</option>
+                <option value="Business Administration ">
+                  Business Administration{" "}
+                </option>
+                <option value="Political science ">Political science </option>
                 <option value="Chemistry">Chemistry</option>
                 <option value="ICT">ICT</option>
                 <option value="Bangla">Bangla</option>
