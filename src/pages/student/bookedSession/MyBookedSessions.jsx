@@ -34,7 +34,9 @@ const MyBookedSessions = () => {
 
   return (
     <div className="overflow-x-auto p-4">
-      <h2 className="text-2xl font-bold mb-4">My Booked Sessions</h2>
+      <h2 className="text-2xl font-bold mb-4 text-center text-[#00acc1]">
+        My Booked Sessions
+      </h2>
       <table className="table w-full">
         <thead className="bg-gray-100 text-black">
           <tr>

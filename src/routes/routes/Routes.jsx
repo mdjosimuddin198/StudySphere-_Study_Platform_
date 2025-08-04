@@ -29,11 +29,13 @@ import CreateNote from "../../pages/student/createNote/CreateNote";
 import MyNotes from "../../pages/student/myNotes/MyNotes";
 import MyMaterials from "../../pages/admin/myMaterials/MyMaterials";
 import CreateStudySession from "../../pages/teacher/createStudySession/CreateStudySession";
+import NotFoundPage from "../../components/not_found_page/NotFoundPage";
 
 const Routes = createBrowserRouter([
   {
     path: "/",
     Component: Mainlayouts,
+    errorElement: <NotFoundPage></NotFoundPage>,
     children: [
       { index: true, Component: Home },
       {

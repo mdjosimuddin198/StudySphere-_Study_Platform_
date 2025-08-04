@@ -33,7 +33,7 @@ const CreateNote = () => {
 
   return (
     <div className="max-w-xl mx-auto mt-8 p-6 bg-base-100 shadow rounded">
-      <h2 className="text-2xl font-bold text-[#00E1FF] mb-4">
+      <h2 className="text-2xl font-bold text-center text-[#00E1FF] mb-4">
         Create New Note
       </h2>
 
