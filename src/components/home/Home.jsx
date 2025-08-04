@@ -7,6 +7,7 @@ import FAQ_Section from "../../pages/FAQ/FAQ_Section";
 import Newsletter from "../../pages/newsletter/Newsletter";
 import StudyListHome from "../../pages/studyLIst/StudyListHome";
 import RoadMap from "./roadmap/RoadMap";
+import Reviews from "./reviews/Reviews";
 
 const slidesData = [
   {
@@ -128,6 +129,7 @@ const HeroSlider = () => {
       <StudyListHome></StudyListHome>
       <RoadMap></RoadMap>
       <FAQ_Section></FAQ_Section>
+      <Reviews></Reviews>
       <Newsletter></Newsletter>
     </>
   );

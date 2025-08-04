@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import learningPaths from "../../../assets/roadmapDemoData/learningPaths.json";
 const RoadMap = () => {
-  console.log(learningPaths);
+  // console.log(learningPaths);
   return (
     <>
       <h2 className="text-4xl text-[#00E1FF] font-bold mb-6 py-6 text-center">
