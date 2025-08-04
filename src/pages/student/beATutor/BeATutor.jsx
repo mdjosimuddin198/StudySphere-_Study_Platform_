@@ -4,6 +4,8 @@ import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 import useAuth from "../../../hooks/useAuth";
 import useSecureAxios from "../../../useAxois/useSecureAxios/useSecureAxios";
+import Teacher from "../../../assets/LottieFiles/Teacher.json";
+import Lottie from "lottie-react";
 
 const BeATutor = () => {
   const { logedInuser } = useAuth();
@@ -37,11 +39,7 @@ const BeATutor = () => {
       <div className="grid grid-cols-1 md:grid-cols-2">
         {/* Image Section (Always Visible) */}
         <div className="order-1 md:order-2">
-          <img
-            src="https://media.istockphoto.com/id/187244393/photo/we-will-get-to-the-right-answer-eventually.jpg?s=612x612&w=0&k=20&c=sv85YclfSvJwBzxHipFN5YSNIDSU6YXe8skqZb6QVjw="
-            alt="Be a Tutor"
-            className="w-full h-full object-cover rounded-t-xl md:rounded-l-none md:rounded-r-xl"
-          />
+          <Lottie animationData={Teacher} loop={true}></Lottie>
         </div>
 
         {/* Form Section */}
