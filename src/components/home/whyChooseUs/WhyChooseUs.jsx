@@ -29,9 +29,11 @@ const WhyChooseUs = () => {
   return (
     <section className="my-4">
       <div className="flex items-center justify-center mt-6">
-        <button className="btn bg-[#00acc1] rounded-2xl ">Why Choose Us</button>
+        <button className="btn bg-[#00E1FF] text-black rounded-2xl ">
+          Why Choose Us
+        </button>
       </div>
-      <h2 className="text-[#00acc1] mb-6 py-6 text-3xl text-center font-bold">
+      <h2 className="text-[#00E1FF] mb-6 py-6 text-3xl text-center font-bold">
         Explore Yourself All Over The World
       </h2>
       <div className="bg-base-200 my-4 py-16 px-4 e">
@@ -44,11 +46,11 @@ const WhyChooseUs = () => {
                   alt={step.title}
                   className="rounded-full w-full h-full object-cover"
                 />
-                <div className="absolute -top-5 left-1/2 transform -translate-x-1/2 bg-[#00acc1] w-14 h-14 rounded-full flex items-center justify-center shadow-lg">
+                <div className="absolute -top-5 left-1/2 transform -translate-x-1/2 bg-[#00E1FF] w-14 h-14 rounded-full flex items-center justify-center shadow-lg">
                   {step.icon}
                 </div>
               </div>
-              <h3 className="text-xl  font-bold text-[#00acc1]">
+              <h3 className="text-xl  font-bold text-[#00E1FF]">
                 {step.title}
               </h3>
               <p className="0 text-sm">{step.description}</p>
