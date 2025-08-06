@@ -1,6 +1,14 @@
-# 📘 Collaborative Study Platform
+# 🎓 StudySphere - Education Management System
 
 A **Full-Stack Web Application** that connects **Students**, **Tutors**, and **Admins** for effective **study session management**, **material sharing**, and **collaborative learning**.
+
+- ✅ Built separate dashboards for Admin, Teacher, and Student, each with permission-based
+  functionality. Admin can approve/reject classes, teachers can manage their content, and students can view enrolled classes.
+- ✅ Class Management System:Teachers can add/update classes, students can enroll and view class
+  progress, and admins can approve or reject classes.
+- ✅ Integrated Stripe for secure class payments. Upon successful payment, the
+  student's email is dynamically added to the class's enrolled list in the database,
+  ensuring accurate enrollment tracking and access to owned classes from the dashboard.
 
 ---
 
