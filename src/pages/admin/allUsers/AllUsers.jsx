@@ -15,7 +15,9 @@ const AllUsers = () => {
   } = useQuery({
     queryKey: ["allUsers"],
     queryFn: async () => {
-      const res = await axiosSecure.get("http://localhost:5000/users");
+      const res = await axiosSecure.get(
+        "https://study-sphere-server-orpin.vercel.app/users"
+      );
       return res.data;
     },
   });
@@ -24,12 +26,14 @@ const AllUsers = () => {
   if (isError) return <Navigate to="/forbidden"></Navigate>;
 
   return (
-    <div className="overflow-x-auto bg-white shadow rounded-lg p-4">
-      <h2 className="text-xl font-semibold text-[#00E1FF] mb-4">All Users</h2>
+    <div className="overflow-x-auto bg-white text-black  shadow rounded-lg p-4">
+      <h2 className="text-xl font-semibold text-[#00E1FF] text-center mb-4">
+        All Users
+      </h2>
 
       <table className="table w-full">
         <thead className="bg-cyan-100">
-          <tr>
+          <tr className="text-black">
             <th>#</th>
             <th>Email</th>
             <th>Role</th>

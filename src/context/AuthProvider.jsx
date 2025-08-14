@@ -35,9 +35,13 @@ const AuthProvider = ({ children }) => {
       if (user?.email) {
         const info = { userEmail: user.email };
         axios
-          .post("http://localhost:5000/jwt_token", info, {
-            withCredentials: true,
-          })
+          .post(
+            "https://study-sphere-server-orpin.vercel.app/jwt_token",
+            info,
+            {
+              withCredentials: true,
+            }
+          )
           .then((res) => {
             // console.log("after jwt token ", res.data);
           })

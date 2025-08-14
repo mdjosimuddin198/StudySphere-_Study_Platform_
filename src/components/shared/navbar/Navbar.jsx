@@ -43,7 +43,7 @@ const Navbar = () => {
       await logOutUser();
 
       // 2️⃣ Express এ কল দিয়ে কুকিতে থাকা টোকেনও clear করো
-      await fetch("http://localhost:5000/api/logout", {
+      await fetch("https://study-sphere-server-orpin.vercel.app/api/logout", {
         method: "POST",
         credentials: "include",
       });

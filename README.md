@@ -118,7 +118,7 @@ JWT_SECRET=your_jwt_secret
 #### Client `.env`
 
 ```
-VITE_API_URL=http://localhost:5000
+VITE_API_URL=https://study-sphere-server-orpin.vercel.app
 VITE_FIREBASE_API_KEY=your_firebase_api_key
 ```
 
