@@ -30,6 +30,7 @@ import MyNotes from "../../pages/student/myNotes/MyNotes";
 import MyMaterials from "../../pages/admin/myMaterials/MyMaterials";
 import CreateStudySession from "../../pages/teacher/createStudySession/CreateStudySession";
 import NotFoundPage from "../../components/not_found_page/NotFoundPage";
+import DashboardLayot from "../../layouts/dashboardLayout/DashboardLayot";
 
 const Routes = createBrowserRouter([
   {
@@ -113,6 +114,10 @@ const Routes = createBrowserRouter([
       </PrivetRoutes>
     ),
     children: [
+      {
+        index: true,
+        Component: DashboardLayot,
+      },
       // studern routes
       {
         path: "view_booked_session",

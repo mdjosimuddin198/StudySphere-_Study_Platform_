@@ -21,8 +21,7 @@ const WhyChooseUs = () => {
       description:
         "Standards in leadership skills synergize optimal expertise rather than innovative leadership skills.",
       icon: <FaCalendarCheck className=" text-2xl" />,
-      image:
-        "https://wp.rrdevs.net/edcare/wp-content/uploads/2024/12/promo-img-3.png",
+      image: "https://i.ibb.co.com/VWmDFKPd/image.png",
     },
   ];
 
