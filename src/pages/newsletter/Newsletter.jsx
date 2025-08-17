@@ -33,7 +33,7 @@ const Newsletter = () => {
         />
         <button
           type="submit"
-          className="btn bg-[#00E1FF] text-black text-white font-semibold px-6 py-3 transition w-full md:w-auto"
+          className="btn bg-[#00E1FF]  text-white font-semibold px-6 py-3 transition w-full md:w-auto"
         >
           Subscribe
         </button>
