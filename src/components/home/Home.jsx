@@ -10,6 +10,7 @@ import RoadMap from "./roadmap/RoadMap";
 import Reviews from "./reviews/Reviews";
 import WhyChooseUs from "./whyChooseUs/WhyChooseUs";
 import Overview from "./overview/Overview";
+import SuccessStories from "./successStories/SuccessStories";
 
 const slidesData = [
   {
@@ -134,6 +135,7 @@ const HeroSlider = () => {
       <Overview></Overview>
       <FAQ_Section></FAQ_Section>
       <Reviews></Reviews>
+      <SuccessStories></SuccessStories>
       <Newsletter></Newsletter>
     </>
   );
