@@ -15,7 +15,7 @@ const useUserRole = () => {
     },
   });
 
-  const role = roleData?.role || "user";
+  let role = roleData?.role || "user";
 
   return {
     role,
